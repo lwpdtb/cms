@@ -1,0 +1,294 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>DedeCms menu</title>
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<script language="javascript" type="text/javascript" src="../include/js/dedeajax2.js"></script>
+<script src="../include/js/jquery/jquery.js" language="javascript" type="text/javascript"></script>
+<?php
+echo "<script language='javascript'>var curopenItem = '$openitem';</script>\r\n";
+?>
+<script language="javascript" type="text/javascript" src="js/leftmenu.js"></script>
+<style>p
+div {
+	padding:0px;
+	margin:0px;
+}
+@font-face {
+    /* font-properties */
+    font-family: wryh;
+    src:url('css/msyh.ttc');
+}
+body {
+	padding:0px;
+	margin:auto;
+	text-align:center;
+	background-color:rgb(40,48,56);
+	overflow:scroll;
+	overflow-x:hidden;
+	scrollbar-face-color: #eff8e6;
+	scrollbar-shadow-color: #edf2e3;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-3dlight-color: #F2F2F2;
+	scrollbar-darkshadow-color: #bdbcbd;
+	scrollbar-arrow-color: #bdbcbd
+}
+dl.bitem {
+	clear:both;
+	width:195px;
+	margin:0px;
+	background-color: rgb(34,40,46);
+    background-image: url(images/background_down.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: 12px 15px;
+}
+dl.bitem2 {
+	clear:both;
+	width:195px;
+	margin:0px;
+	background-color: rgb(34,40,46);
+    background-image: url(images/background_right.png);
+    background-size: 9px 9px;
+    background-repeat: no-repeat;
+    background-position: 14px 15px;
+}
+dl.bitem dt, dl.bitem2 dt {
+	height:40px;
+	line-height:40px;
+	padding-left:35px;
+	cursor:pointer;
+	/*background: url(images/background_down.png) 15px 15px no-repeat;
+    background-size: 12px 12px;*/
+}
+dl.bitem dt b, dl.bitem2 dt b {
+	color:rgb(230,230,230);
+}
+dl.bitem dd, dl.bitem2 dd {
+	padding:3px 3px 3px 3px;
+	background-color:rgb(40,48,56);
+}
+div.items {
+	clear:both;
+	padding:0px;
+	height:0px;
+}
+.fllct {
+	float:left;
+	width:130px;
+	margin: 0 0 0 0px;
+
+}
+.flrct {
+	float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.sitemu li {
+	line-height:35px;
+}
+ul {
+	padding-top:3px;
+}
+li {
+	height:35px;
+}
+
+
+
+</style>
+<link href="images/style<?php echo $cfg_admin_skin;?>/style.css" rel="stylesheet" type="text/css" />
+<base target="main" />
+</head>
+<body target="main" onLoad="CheckOpenMenu();">
+<table width="180" align="left" border='0' cellspacing='0' cellpadding='0' style="text-align:left;">
+  <tr>
+    
+    <td width='160' id='mainct' valign="top">
+      <div id='ct1'>
+      	  <dl class="bitem" id="sunitems1_1"><dt onclick="showHide(&quot;items1_1&quot;)"><b>资讯及信息</b></dt>
+<dd style="display:block" class="sitem" id="items1_1">
+<ul class="sitemu">
+<li>    
+
+    <div class="items">
+	       
+            <div class="fllct"><div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Column management.png" style="width:20px"></div><a href="catalog_main.php" target="main">网站栏目管理</a></div>
+
+            <div class="flrct">
+                <a href="catalog_add.php?listtype=all" target="main"><img src="images/Create column.png" style="width: 15px;" alt="创建栏目" title="创建栏目"></a>
+            </div>
+        </div>
+</li>
+<li><div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/All File list.png" style="width:20px"></div>
+	<a href="content_list.php" target="main" class="fllct">所有档案列表</a>
+</li>
+<li><div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Pending audit file.png" style="width:20px"></div>
+	<a href="content_list.php?arcrank=-1" target="main" class="fllct">等审核的档案</a>
+</li>
+<li><div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/mine_publish.png" style="width:20px"></div>
+	<a href="content_list.php?mid=1" target="main" class="fllct">我发布的文档</a>
+</li>
+<li><div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Comment management.png" style="width:20px"></div>
+	<a href="feedback_main.php" target="main" class="fllct">评论管理</a>
+</li>
+<li>        <div class="items">
+            <div class="fllct">
+            	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Content recycle bin.png" style="width:20px"></div>
+            	<a href="recycling.php" target="main">内容回收站</a></div>
+
+            <div class="flrct">
+                <a href="archives_do.php?dopost=clear&amp;aid=no&amp;recycle=1" target="main"><img src="images/delete.png" style="width: 15px;" alt="清空回收站" title="清空回收站"></a>
+            </div>
+        </div>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+      </div>
+
+
+      <dl class="bitem" id="sunitems2_1"><dt onclick="showHide(&quot;items2_1&quot;)"><b>留言板管理</b></dt>
+<dd style="display:block" class="sitem" id="items2_1">
+<ul class="sitemu">
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/user management.png" style="width:20px"></div>
+	<a href="weibo_manage/user.php" target="main" class="fllct">用户管理</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Inventory management.png" style="width:20px"></div>
+	<a href="weibo_manage/weibo_manage.php" target="main" class="fllct">问答管理</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Question audit.png" style="width:20px"></div>
+	<a href="weibo_manage/weibo_manage.php?act=check_list" target="main" class="fllct">提问审核</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Review management.png" style="width:20px"></div>
+	<a href="weibo_manage/comment_manage.php" target="main" class="fllct">评论管理</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Micro-blog delete.png" style="width:20px"></div>
+	<a href="weibo_manage/weibo_manage.php?act=del_list" target="main" class="fllct">微博删除</a>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="bitem" id="sunitems3_1"><dt onclick="showHide(&quot;items3_1&quot;)"><b>内容管理</b></dt>
+<dd style="display:block" class="sitem" id="items3_1">
+<ul class="sitemu">
+<li>        <div class="items">
+            <div class="fllct">
+            	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Ordinary article.png" style="width:20px"></div>
+            	<a href="content_list.php?channelid=1" target="main">普通文章</a></div>
+
+            <div class="flrct">
+                <a href="article_add.php?channelid=1" target="main"><img src="images/Create column.png" style="width: 15px;" alt="录入新内容" title="录入新内容"></a>
+            </div>
+        </div>
+</li>
+<li>        <div class="items">
+            <div class="fllct">
+            	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Image set.png" style="width:20px"></div>
+            	<a href="content_i_list.php?channelid=2" target="main">图片集</a></div>
+
+            <div class="flrct">
+                <a href="album_add.php?channelid=2" target="main"><img src="images/Create column.png" style="width: 15px;" alt="录入新内容" title="录入新内容"></a>
+            </div>
+        </div>
+</li>
+<li>        <div class="items">
+            <div class="fllct">
+            	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Subject management.png" style="width:20px"></div>
+            	<a href="content_s_list.php" target="main">专题管理</a></div>
+
+            <div class="flrct">
+                <a href="spec_add.php" target="main"><img src="images/Create column.png" style="width: 15px;" alt="录入新内容" title="录入新内容"></a>
+            </div>
+        </div>
+</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="bitem" id="sunitems4_1"><dt onclick="showHide(&quot;items4_1&quot;)"><b>视频管理</b></dt>
+<dd style="display:block" class="sitem" id="items4_1">
+<ul class="sitemu">
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/File upload.png" style="width:20px"></div>
+	<a href="media_add.php" target="main" class="fllct">上传新文件</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Attachment data management.png" style="width:20px"></div>
+	<a href="media_main.php" target="main" class="fllct">附件数据管理</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/File manager.png" style="width:20px"></div>
+	<a href="media_main.php?dopost=filemanager" target="main" class="fllct">文件式管理器</a>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="bitem" id="sunitems5_1"><dt onclick="showHide(&quot;items1_10&quot;)"><b>其他参数</b></dt>
+<dd style="display:block" class="sitem" id="items1_10">
+<ul class="sitemu">
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Basic system parameters.png" style="width:20px"></div>
+	<a href="sys_info.php" target="main" class="fllct">系统基本参数</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/System user management.png" style="width:20px"></div>
+	<a href="sys_admin_user.php" target="main" class="fllct">系统用户管理</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/User group settings.png" style="width:20px"></div>
+	<a href="sys_group.php" target="main" class="fllct">用户组设定</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Serverdistribution.png" style="width:20px"></div>
+	<a href="sys_multiserv.php" target="main" class="fllct">服务器分布/远程</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/System log management.png" style="width:20px"></div>
+	<a href="log_list.php" target="main" class="fllct">系统日志管理</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/security settings.png" style="width:20px"></div>
+	<a href="sys_safe.php" target="main" class="fllct">验证安全设置</a>
+</li>
+<li>
+	<div style="width: 20px;float: left;padding: 7px 25px 0px 5px;"><img src="images/Image watermark settings.png" style="width:20px"></div>
+	<a href="sys_info_mark.php" target="main" class="fllct">图片水印设置</a>
+</li>
+
+</ul>
+</dd>
+</dl>
+      </td>
+  </tr>
+
+</table>
+<?php
+if(!empty($openitem) && $openitem!=1)
+{
+?>
+<script language='javascript'>
+	ShowMainMenu(100);
+</script>
+<?php
+}
+?>
+<script language="javascript">
+function myAlert()
+{
+	alert('dede');	
+}
+</script>
+</body>
+</html>

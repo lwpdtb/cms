@@ -1,0 +1,924 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>畅玩无限_我的网站</title>
+<meta name="keywords" content="畅玩,无限,畅玩,无限,到了,冬天,以后,大家," />
+<meta name="description" content="畅玩无限 到了冬天以后，大家是不是觉得整个人都很没干劲？周末根本不想出门，躺在被窝里就像废人一样~早上起不来，什么都不想做。 日本专家说，其实这都是病！因为得了冬季忧" />
+<link href="/9010cms/templets/default/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/9010cms/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/9010cms/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/9010cms/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/9010cms/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/9010cms/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body class="articleview">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/9010cms/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/9010cms/data/sitemap.html" target="_blank">网站地图</a>|<a href="/9010cms/tags.php">TAG标签</a><a href="/9010cms/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://119.29.249.194');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://119.29.249.194','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://119.29.249.194"><img src="/9010cms/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/9010cms/'><span>主页</span></a></li>
+      	
+      	<li><a href='/9010cms/a/chunxiaohuodong/' ><span>信息类-促销活动</span></a></li>
+      	<li class='hover'><a href='/9010cms/a/wenzhang_xinpinchangxian/'  rel='dropmenu14'><span>信息类-新品尝鲜</span></a></li>
+      	<li><a href='/9010cms/a/dangqichunxiaoxinxizhanshi/'  rel='dropmenu1'><span>信息类-公司新闻</span></a></li>
+      	
+      	<li><a href='/9010cms/a/shipintupianhemiaoshu/' ><span>视频-公司资讯</span></a></li>
+      	
+      	<li><a href='/9010cms/a/zhaopinxinxizhanshi/'  rel='dropmenu5'><span>信息-招聘信息</span></a></li>
+      	
+      	<li><a href='/9010cms/a/xindianxinxichunxiaozhanshi/'  rel='dropmenu3'><span>【预留接口】其他版块</span></a></li>
+      	
+      	<li><a href='/9010cms/a/gongsizixunzhanshi/'  rel='dropmenu4'><span>【预留接口】其他版块</span></a></li>
+      	
+      	<li><a href='/9010cms/a/xinshangpinxinxizhanshi/' ><span>【预留接口】图片集-促销活动</span></a></li>
+      	
+      	<li><a href='/9010cms/a/tupianxinwen/' ><span>【预留接口】图片集-新品尝鲜</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/9010cms/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/9010cms/tags.php?/dfdg/'>dfdg</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://119.29.249.194/9010cms'>主页</a> > <a href='/9010cms/a/wenzhang_xinpinchangxian/'>信息类-新品尝鲜</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>畅玩无限</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2016-12-11 10:57<small>来源:</small>未知 <small>作者:</small>admin <small>点击:</small>
+   <script src="/9010cms/plus/count.php?view=yes&aid=61&mid=1" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="intro">畅玩无限 到了冬天以后，大家是不是觉得整个人都很没干劲？周末根本不想出门，躺在被窝里就像废人一样~早上起不来，什么都不想做。 日本专家说，其实这都是病！因为得了冬季忧</div>
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+      <section data-role="outer" label="Powered by 135editor.com" style="font-family: 微软雅黑; font-size: 16px">
+	<p style="position: relative; text-align: center; padding-bottom: 0px; line-height: 1.5em; border-right-width: 0px; padding-left: 0px; padding-right: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px">
+		&nbsp;</p>
+	<section data-width="100%" style="background-image: url(http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9naWYvRDhmbnpXa21kVmdNUXZFT3NwRld1dU1YRWpBdmhjM0JwVTFTc2VWUUNjdUpZU21pYWIyVGhYWkI3Z2ljTTFTUmljRm1xZkNFNlpHaWFLbTVyS21DblhwbGlhQS8wP3d4X2ZtdD1naWY=); box-sizing: border-box; text-align: center; width: 100%; background-attachment: scroll; display: inline-block; background-repeat: repeat; background-position: 0% 0%; vertical-align: top; background-size: 77.7842%">
+		<section style="box-sizing: border-box; text-align: center; margin: 0px 0% 20px">
+			<section style="box-sizing: border-box; text-align: center; padding-bottom: 0px; background-color: rgb(0,175,236); padding-left: 8px; padding-right: 8px; display: inline-block; color: rgb(255,255,255); font-size: 20px; vertical-align: top; padding-top: 0px; border-bottom-left-radius: 0.5em; border-bottom-right-radius: 0.5em">
+				<p style="box-sizing: border-box; text-align: center">
+					畅玩无限</p>
+				<div style="text-align: center">
+					&nbsp;</div>
+			</section>
+		</section>
+		<section style="box-sizing: border-box; text-align: center; margin: 10px 0% 20px">
+			<section class="135brush" style="box-sizing: border-box; text-align: center; padding-bottom: 0px; line-height: 1.8; padding-left: 15px; padding-right: 15px; color: rgb(166,166,166); font-size: 15px; padding-top: 0px">
+				<p style="text-align: center">
+					<span style="font-family: 微软雅黑, sans-serif; color: #000000; font-size: 14px">到了冬天以后，大家是不是觉得整个人都很没干劲？周末根本不想出门，躺在被窝里就像废人一样~早上起不来，什么都不想做。<img src="/9010cms/uploads/allimg/161210/14112L407-0.gif" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="sdz_thumb.gif" />日本专家说，其实这都是病！因为得了&ldquo;冬季忧郁&rdquo;症，所以整个状态才会不好的。<img src="/9010cms/uploads/allimg/161210/14112G2S-1.gif" style="line-height: 25px; white-space: pre-wrap" title="sada_thumb.gif" /></span></p>
+				<p style="text-align: center">
+					<img src="/9010cms/uploads/allimg/161210/14112G2G-2.jpg" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="下载.jpg" /></p>
+				<p style="text-align: center">
+					<span style="font-family: 微软雅黑, sans-serif; color: #000000; font-size: 14px">要怎么治疗&ldquo;冬季忧郁症？&rdquo;<img src="/9010cms/uploads/allimg/161210/14112G3W-3.gif" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="yw_thumb.gif" />医生建议，多晒太阳，多吃蔬菜水果就好了。<img src="/9010cms/uploads/allimg/161210/14112MP6-4.gif" /></span><span style="color: #000000"><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">但不管是冰雪连天的北方，还是湿冷入骨的南方，</span><span style="font-family: 微软雅黑, sans-serif">冬天</span><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">里最受欢迎的美食要数火锅了。<img src="/9010cms/uploads/allimg/161210/14112HG8-5.gif" style="white-space: pre-wrap" title="tootha_thumb.gif" />红彤彤的锅底，涮上各式各样的菜品，温暖滋补，寒冷仿佛都在热气中消失殆尽。</span>约上三五好友，围坐一起边吃火锅边摆龙门阵。<img src="/9010cms/uploads/allimg/161210/14112HG8-5.gif" style="white-space: pre-wrap" title="tootha_thumb.gif" /><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">冬天还是和火锅最配。<img src="/9010cms/uploads/allimg/161210/14112HN6-7.gif" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="cza_thumb.gif" /></span></span></p>
+				<p style="text-align: center">
+					<span style="font-family: 微软雅黑, sans-serif; color: #000000; font-size: 14px"><img src="/9010cms/uploads/allimg/161210/14112I044-8.jpg" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="u=3386815540,926302354&amp;fm=21&amp;gp=0.jpg" /></span></p>
+				<p style="text-align: center; line-height: 15px; margin-bottom: 0px">
+					<span style="color: #000000"><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">马上又到双</span><span style="font-family: Arial, sans-serif; font-size: 14px">12</span><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">，刚从双</span><span style="font-family: Arial, sans-serif; font-size: 14px">11</span><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">的吃土的困境里摆脱出来，难道又要继续吃土。<img src="/9010cms/uploads/allimg/161210/14112G2S-1.gif" style="line-height: 25px; white-space: pre-wrap" title="sada_thumb.gif" />&nbsp;或蹭朋友的？</span></span></p>
+				<p style="text-align: center; line-height: 15px; margin-bottom: 0px">
+					&nbsp;</p>
+				<p style="text-align: center">
+					<img src="/9010cms/uploads/allimg/161210/14112I5I-10.gif" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="a03372a2gw1faes9gt4eng206t06ob1s.gif" /></p>
+				<p style="text-align: center">
+					<span style="color: #000000"><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">不怕，</span><span style="font-family: Arial, sans-serif; font-size: 14px">9010</span><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">便利店为大家准备了超多半价得的美食哦。</span><span style="font-family: 微软雅黑, sans-serif">一大波半价促销来袭，</span><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">不仅管够，还管你不受双</span><span style="font-family: Arial, sans-serif; font-size: 14px">12</span><span style="font-family: 微软雅黑, sans-serif; font-size: 14px">剁手。<img alt="heia_thumb.gif" src="/9010cms/uploads/allimg/161210/14112KE2-11.gif" /></span></span></p>
+				<p style="text-align: center">
+					<span style="font-family: 微软雅黑, sans-serif; color: #000000; font-size: 14px"><img src="/9010cms/uploads/allimg/161210/14112M037-12.jpg" style="z-index: -1; line-height: 25px; width: 100%; white-space: pre-wrap; cursor: pointer;" title="07.jpg" /></span></p>
+				<section class="_135editor" data-id="88101" data-tools="135编辑器" style="position: relative; text-align: center; padding-bottom: 0px; border-right-width: 0px; padding-left: 0px; padding-right: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px">
+					<section style="position: static; text-align: center; margin-top: 10px; margin-bottom: 10px">
+						<section style="text-align: center">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFOG4weFVoYUl0bEZSZmp1ZUt6bDJaQk1vRGN3aWJXNmljZUNsSEhuMkhTYWhDRnJ6RmdFQ1ZIOFEvMD93eF9mbXQ9cG5n" style="margin-top: -16px; margin-left: 0.3em; vertical-align: middle" /></section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; float: right; height: 0.6em; margin-right: -5px; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFZWliNzZlMzQ1VnVkT3luVGV5QzVNeXdJMEt5Z1hpY1FJZDZDWDRpYlA2WENXZXpwR2htRHdzMVdnLzA/d3hfZm10PXBuZw==" style="margin-top: -5px; display: inline-block; vertical-align: top" /></section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">乐天</span><span style="color: rgb(0, 0, 0);">56%</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">巧克力</span><span style="color: rgb(0, 0, 0);">86g</span><br />
+									<br />
+									<strong style="color: rgb(255, 0, 0);"><span style="font-family: 微软雅黑, sans-serif; font-size: 19px">第二件半价</span></strong><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">折后价</span><strong style="color: rgb(0, 0, 0);"><span style="font-size: 19px">14.6</span></strong><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">元</span><span style="color: rgb(0, 0, 0);">/</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">盒</span></div>
+							</section>
+						</section>
+						<section class="135brush" style="text-align: center; padding-bottom: 15px; margin-top: -10px; padding-left: 25px; width: 556px; padding-right: 25px; display: inline-block; margin-bottom: 10px; padding-top: 15px">
+							<div style="text-align: center">
+								&nbsp;</div>
+						</section>
+						<section style="text-align: center; margin-top: -25px">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFblpDaG9PQUhjZ1BWVWdnSDcyZWQzcFkxSm9ic2lhWFBFNGxpYVFIeDV4bzJkNzNrU011TEhxUHcvMD93eF9mbXQ9cG5n" style="margin-bottom: -0.46em; margin-left: 0.26em; vertical-align: middle" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFaGVBM1poQVVITERWWGlham0xTDJya2ZKQkJCRGVLNHFMNElseWpwU0w4TGFpY25icmlhZTBpYk1GUS8wP3d4X2ZtdD1wbmc=" style="vertical-align: middle; margin-right: 0.3em" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); margin-top: -0.3em; width: 0.6em; height: 0.6em; margin-left: 1.2em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									&nbsp;</div>
+							</section>
+						</section>
+					</section>
+				</section>
+				<p style="text-align: center">
+					<img src="/9010cms/uploads/allimg/161210/14112G4I-13.jpg" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="06.jpg" /></p>
+				<section class="_135editor" data-id="88101" data-tools="135编辑器" style="position: relative; text-align: center; padding-bottom: 0px; border-right-width: 0px; padding-left: 0px; padding-right: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px">
+					<section style="position: static; text-align: center; margin-top: 10px; margin-bottom: 10px">
+						<section style="text-align: center">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFOG4weFVoYUl0bEZSZmp1ZUt6bDJaQk1vRGN3aWJXNmljZUNsSEhuMkhTYWhDRnJ6RmdFQ1ZIOFEvMD93eF9mbXQ9cG5n" style="margin-top: -16px; margin-left: 0.3em; vertical-align: middle" /></section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; float: right; height: 0.6em; margin-right: -5px; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFZWliNzZlMzQ1VnVkT3luVGV5QzVNeXdJMEt5Z1hpY1FJZDZDWDRpYlA2WENXZXpwR2htRHdzMVdnLzA/d3hfZm10PXBuZw==" style="margin-top: -5px; display: inline-block; vertical-align: top" /></section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">欧米丽迷你黑饼干</span><span style="color: rgb(0, 0, 0);">45g</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">系列</span><br />
+									<br />
+									<strong style="color: rgb(255, 0, 0);"><span style="font-family: 微软雅黑, sans-serif; font-size: 19px">第二件半价</span></strong><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">折后价</span><strong style="color: rgb(0, 0, 0);"><span style="font-size: 19px">4.1</span></strong><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">元</span><span style="color: rgb(0, 0, 0);">/</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">盒</span><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">口味任选</span></div>
+							</section>
+						</section>
+						<section class="135brush" style="text-align: center; padding-bottom: 15px; margin-top: -10px; padding-left: 25px; width: 556px; padding-right: 25px; display: inline-block; margin-bottom: 10px; padding-top: 15px">
+							<div style="text-align: center">
+								&nbsp;</div>
+						</section>
+						<section style="text-align: center; margin-top: -25px">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFblpDaG9PQUhjZ1BWVWdnSDcyZWQzcFkxSm9ic2lhWFBFNGxpYVFIeDV4bzJkNzNrU011TEhxUHcvMD93eF9mbXQ9cG5n" style="margin-bottom: -0.46em; margin-left: 0.26em; vertical-align: middle" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFaGVBM1poQVVITERWWGlham0xTDJya2ZKQkJCRGVLNHFMNElseWpwU0w4TGFpY25icmlhZTBpYk1GUS8wP3d4X2ZtdD1wbmc=" style="vertical-align: middle; margin-right: 0.3em" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); margin-top: -0.3em; width: 0.6em; height: 0.6em; margin-left: 1.2em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									&nbsp;</div>
+							</section>
+						</section>
+					</section>
+				</section>
+				<p style="text-align: center">
+					<img src="/9010cms/uploads/allimg/161210/14112L227-14.jpg" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="05.jpg" /></p>
+				<section class="_135editor" data-id="88101" data-tools="135编辑器" style="position: relative; text-align: center; padding-bottom: 0px; border-right-width: 0px; padding-left: 0px; padding-right: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px">
+					<section style="position: static; text-align: center; margin-top: 10px; margin-bottom: 10px">
+						<section style="text-align: center">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFOG4weFVoYUl0bEZSZmp1ZUt6bDJaQk1vRGN3aWJXNmljZUNsSEhuMkhTYWhDRnJ6RmdFQ1ZIOFEvMD93eF9mbXQ9cG5n" style="margin-top: -16px; margin-left: 0.3em; vertical-align: middle" /></section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; float: right; height: 0.6em; margin-right: -5px; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFZWliNzZlMzQ1VnVkT3luVGV5QzVNeXdJMEt5Z1hpY1FJZDZDWDRpYlA2WENXZXpwR2htRHdzMVdnLzA/d3hfZm10PXBuZw==" style="margin-top: -5px; display: inline-block; vertical-align: top" /></section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">苏卡杯装咖啡</span><span style="color: rgb(0, 0, 0);">25g</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">系列</span><br />
+									<br />
+									<strong style="color: rgb(255, 0, 0);"><span style="font-family: 微软雅黑, sans-serif; font-size: 19px">第二件半价</span></strong><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">折后价</span><strong style="color: rgb(0, 0, 0);"><span style="font-size: 19px">3.75</span></strong><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">元</span><span style="color: rgb(0, 0, 0);">/</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">杯</span><br />
+									<br />
+									<span style="font-family: 微软雅黑, sans-serif; color: rgb(0, 0, 0);">口味任选</span></div>
+							</section>
+						</section>
+						<section class="135brush" style="text-align: center; padding-bottom: 15px; margin-top: -10px; padding-left: 25px; width: 556px; padding-right: 25px; display: inline-block; margin-bottom: 10px; padding-top: 15px">
+							<div style="text-align: center">
+								&nbsp;</div>
+						</section>
+						<section style="text-align: center; margin-top: -25px">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFblpDaG9PQUhjZ1BWVWdnSDcyZWQzcFkxSm9ic2lhWFBFNGxpYVFIeDV4bzJkNzNrU011TEhxUHcvMD93eF9mbXQ9cG5n" style="margin-bottom: -0.46em; margin-left: 0.26em; vertical-align: middle" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFaGVBM1poQVVITERWWGlham0xTDJya2ZKQkJCRGVLNHFMNElseWpwU0w4TGFpY25icmlhZTBpYk1GUS8wP3d4X2ZtdD1wbmc=" style="vertical-align: middle; margin-right: 0.3em" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); margin-top: -0.3em; width: 0.6em; height: 0.6em; margin-left: 1.2em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									&nbsp;</div>
+							</section>
+						</section>
+					</section>
+				</section>
+				<p style="text-align: center">
+					<img src="/9010cms/uploads/allimg/161210/14112G925-15.jpg" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="02.jpg" /></p>
+				<section class="_135editor" data-id="88101" data-tools="135编辑器" style="position: relative; text-align: center; padding-bottom: 0px; border-right-width: 0px; padding-left: 0px; padding-right: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px">
+					<section style="position: static; text-align: center; margin-top: 10px; margin-bottom: 10px">
+						<section style="text-align: center">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFOG4weFVoYUl0bEZSZmp1ZUt6bDJaQk1vRGN3aWJXNmljZUNsSEhuMkhTYWhDRnJ6RmdFQ1ZIOFEvMD93eF9mbXQ9cG5n" style="margin-top: -16px; margin-left: 0.3em; vertical-align: middle" /></section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; float: right; height: 0.6em; margin-right: -5px; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFZWliNzZlMzQ1VnVkT3luVGV5QzVNeXdJMEt5Z1hpY1FJZDZDWDRpYlA2WENXZXpwR2htRHdzMVdnLzA/d3hfZm10PXBuZw==" style="margin-top: -5px; display: inline-block; vertical-align: top" /></section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif; font-size: 14px;">购关东煮满</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 14px;">8</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif; font-size: 14px;">元以上</span><br />
+									<br />
+									<strong style="color: rgb(255, 0, 0);"><span style="font-family: 微软雅黑, sans-serif; font-size: 19px">半价得</span></strong><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif; font-size: 14px;">三得利蜜香暖柚</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 14px;">350ml</span><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif; font-size: 14px;">折后价</span><strong style="color: rgb(0, 0, 0);"><span style="font-size: 19px">3.0</span></strong><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif; font-size: 14px;">元</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 14px;">/</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif; font-size: 14px;">瓶</span></div>
+							</section>
+						</section>
+						<section class="135brush" style="text-align: center; padding-bottom: 15px; margin-top: -10px; padding-left: 25px; width: 556px; padding-right: 25px; display: inline-block; margin-bottom: 10px; padding-top: 15px">
+							<div style="text-align: center">
+								&nbsp;</div>
+						</section>
+						<section style="text-align: center; margin-top: -25px">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFblpDaG9PQUhjZ1BWVWdnSDcyZWQzcFkxSm9ic2lhWFBFNGxpYVFIeDV4bzJkNzNrU011TEhxUHcvMD93eF9mbXQ9cG5n" style="margin-bottom: -0.46em; margin-left: 0.26em; vertical-align: middle" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFaGVBM1poQVVITERWWGlham0xTDJya2ZKQkJCRGVLNHFMNElseWpwU0w4TGFpY25icmlhZTBpYk1GUS8wP3d4X2ZtdD1wbmc=" style="vertical-align: middle; margin-right: 0.3em" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); margin-top: -0.3em; width: 0.6em; height: 0.6em; margin-left: 1.2em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									&nbsp;</div>
+							</section>
+						</section>
+					</section>
+				</section>
+				<p style="text-align: center">
+					<img src="/9010cms/uploads/allimg/161210/14112MQ1-16.jpg" style="z-index: -1; white-space: pre-wrap; cursor: pointer" title="03.jpg" /></p>
+				<section class="_135editor" data-id="88101" data-tools="135编辑器" style="position: relative; text-align: center; padding-bottom: 0px; border-right-width: 0px; padding-left: 0px; padding-right: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px">
+					<section style="position: static; text-align: center; margin-top: 10px; margin-bottom: 10px">
+						<section style="text-align: center">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFOG4weFVoYUl0bEZSZmp1ZUt6bDJaQk1vRGN3aWJXNmljZUNsSEhuMkhTYWhDRnJ6RmdFQ1ZIOFEvMD93eF9mbXQ9cG5n" style="margin-top: -16px; margin-left: 0.3em; vertical-align: middle" /></section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; float: right; height: 0.6em; margin-right: -5px; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFZWliNzZlMzQ1VnVkT3luVGV5QzVNeXdJMEt5Z1hpY1FJZDZDWDRpYlA2WENXZXpwR2htRHdzMVdnLzA/d3hfZm10PXBuZw==" style="margin-top: -5px; display: inline-block; vertical-align: top" /></section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">购亿腰果</span><span style="color: rgb(0, 0, 0);">60g</span><br />
+									<br />
+									<strong style="color: rgb(255, 0, 0);"><span style="font-family: 微软雅黑, sans-serif; font-size: 19px">半价得</span></strong><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">亿心扁桃仁</span><span style="color: rgb(0, 0, 0);">60g</span><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">折后价</span><strong style="color: rgb(0, 0, 0);"><span style="font-size: 19px">7.0</span></strong><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">元</span><span style="color: rgb(0, 0, 0);">/</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">袋</span></div>
+							</section>
+						</section>
+						<section style="text-align: center; margin-top: -25px">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFblpDaG9PQUhjZ1BWVWdnSDcyZWQzcFkxSm9ic2lhWFBFNGxpYVFIeDV4bzJkNzNrU011TEhxUHcvMD93eF9mbXQ9cG5n" style="margin-bottom: -0.46em; margin-left: 0.26em; vertical-align: middle" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFaGVBM1poQVVITERWWGlham0xTDJya2ZKQkJCRGVLNHFMNElseWpwU0w4TGFpY25icmlhZTBpYk1GUS8wP3d4X2ZtdD1wbmc=" style="vertical-align: middle; margin-right: 0.3em" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); margin-top: -0.3em; width: 0.6em; height: 0.6em; margin-left: 1.2em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									&nbsp;</div>
+							</section>
+						</section>
+					</section>
+				</section>
+				<p style="text-align: center">
+					<img src="/9010cms/uploads/allimg/161210/14112K3Y-17.jpg" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="04.jpg" /></p>
+				<section class="_135editor" data-id="88101" data-tools="135编辑器" style="position: relative; text-align: center; padding-bottom: 0px; border-right-width: 0px; padding-left: 0px; padding-right: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px">
+					<section style="position: static; text-align: center; margin-top: 10px; margin-bottom: 10px">
+						<section style="text-align: center">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFOG4weFVoYUl0bEZSZmp1ZUt6bDJaQk1vRGN3aWJXNmljZUNsSEhuMkhTYWhDRnJ6RmdFQ1ZIOFEvMD93eF9mbXQ9cG5n" style="margin-top: -16px; margin-left: 0.3em; vertical-align: middle" /></section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; float: right; height: 0.6em; margin-right: -5px; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+								<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFZWliNzZlMzQ1VnVkT3luVGV5QzVNeXdJMEt5Z1hpY1FJZDZDWDRpYlA2WENXZXpwR2htRHdzMVdnLzA/d3hfZm10PXBuZw==" style="margin-top: -5px; display: inline-block; vertical-align: top" /></section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">购徽记煮瓜子</span><span style="color: rgb(0, 0, 0);">140g</span><br />
+									<br />
+									<strong style="color: rgb(255, 0, 0);"><span style="font-family: 微软雅黑, sans-serif; font-size: 19px">半价得</span></strong><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">妙想牛肉</span><span style="color: rgb(0, 0, 0);">50g</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">系列任意口味</span><br />
+									<br />
+									<span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">折后价</span><span style="color: rgb(255, 0, 0);"><strong><span style="font-size: 19px">3.4</span></strong></span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">元</span><span style="color: rgb(0, 0, 0);">/</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, sans-serif;">袋</span></div>
+							</section>
+						</section>
+						<section class="135brush" style="text-align: center; padding-bottom: 15px; margin-top: -10px; padding-left: 25px; width: 556px; padding-right: 25px; display: inline-block; margin-bottom: 10px; padding-top: 15px">
+							<div style="text-align: center">
+								&nbsp;</div>
+						</section>
+						<section style="text-align: center; margin-top: -25px">
+							<section style="text-align: center; width: 1.5em; float: left">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFblpDaG9PQUhjZ1BWVWdnSDcyZWQzcFkxSm9ic2lhWFBFNGxpYVFIeDV4bzJkNzNrU011TEhxUHcvMD93eF9mbXQ9cG5n" style="margin-bottom: -0.46em; margin-left: 0.26em; vertical-align: middle" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); width: 0.6em; height: 0.6em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; width: 1.5em; float: right; margin-right: 10px">
+								<div style="text-align: center">
+									<img class="assistant" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvaWFucTAzVVVXR21JeXhLRDlBc1lLVkFselFJblNrTEZFaGVBM1poQVVITERWWGlham0xTDJya2ZKQkJCRGVLNHFMNElseWpwU0w4TGFpY25icmlhZTBpYk1GUS8wP3d4X2ZtdD1wbmc=" style="vertical-align: middle; margin-right: 0.3em" /></div>
+								<section style="text-align: center; background-color: rgb(249,110,87); margin-top: -0.3em; width: 0.6em; height: 0.6em; margin-left: 1.2em; border-radius: 100%">
+									<div style="text-align: center">
+										&nbsp;</div>
+								</section>
+							</section>
+							<section style="text-align: center; clear: both">
+								<div style="text-align: center">
+									&nbsp;</div>
+							</section>
+						</section>
+					</section>
+				</section>
+				<p style="text-align: center">
+					<img src="/9010cms/uploads/allimg/161210/14112K560-18.gif" style="line-height: 25px; white-space: pre-wrap" title="28fabe0.gif" /></p>
+				<p style="text-align: center">
+					<span style="font-family: 微软雅黑, sans-serif; color: #000000; font-size: 10.5pt; background-size: initial; background-origin: initial; background-clip: initial">哈哈，吃完记得多运动，以免囤太多膘，来年减肥不成功，整个夏天徒伤悲<img src="/9010cms/uploads/allimg/161210/14112H962-19.gif" style="line-height: 25px; white-space: pre-wrap" title="yx_thumb.gif" /><img src="/9010cms/uploads/allimg/161210/14112HG8-5.gif" style="white-space: pre-wrap" title="tootha_thumb.gif" />&nbsp;</span></p>
+				<p style="text-align: center">
+					<span style="font-family: 微软雅黑, sans-serif; color: #000000; font-size: 10.5pt; background-size: initial; background-origin: initial; background-clip: initial"><img src="/9010cms/uploads/allimg/161210/14112JR6-21.jpg" style="z-index: -1; line-height: 25px; white-space: pre-wrap; cursor: pointer" title="u=1255913512,4113562761&amp;fm=21&amp;gp=0.jpg" /></span></p>
+				<p style="text-align: center">
+					&nbsp;</p>
+				<div style="text-align: center">
+					&nbsp;</div>
+			</section>
+		</section>
+	</section>
+</section>
+
+      
+      (责任编辑：admin)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',61)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',61)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(61);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='/9010cms/a/wenzhang_xinpinchangxian/2016/1126/40.html'>8月最新新品尝鲜-鲜食类</a> </li>
+     <li>下一篇：没有了 </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/9010cms/plus/stow.php?aid=61" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/9010cms/plus/erraddsave.php?aid=61&title=畅玩无限" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/9010cms/plus/recommend.php?aid=61" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+ <!-- //AJAX评论区 -->
+ <!-- //主模板必须要引入/9010cms/include/dedeajax2.js -->
+<a name='postform'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dt> <strong>发表评论</strong> <span class="more"></span> </dt>
+    <dd>
+      <div class="dede_comment_post">
+        <form action="#" method="post" name="feedback" onsubmit="return false;">
+          <input type="hidden" name="dopost" value="send" />
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="61" />
+          <input type="hidden" name="fid" id='feedbackfid' value="0" />
+          <div class="dcmp-title"> <small>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</small> </div>
+          <!-- /dcmp-title -->
+          <div class="dcmp-stand"> <strong>评价:</strong>
+            <input type="radio" name="feedbacktype" checked="1" value="feedback" id="dcmp-stand-neu" />
+            <label for="dcmp-stand-neu"><img src="/9010cms/templets/default/images/cmt-neu.gif" />中立</label>
+            <input type="radio" name="feedbacktype" value="good" id="dcmp-stand-good" />
+            <label for="dcmp-stand-good"><img src="/9010cms/templets/default/images/cmt-good.gif" />好评</label>
+            <input type="radio" name="feedbacktype" value="bad" id="dcmp-stand-bad" />
+            <label for="dcmp-stand-bad"><img src="/9010cms/templets/default/images/cmt-bad.gif" />差评</label>
+          </div>
+          <!-- /dcmp-stand -->
+          <div class="clr"></div>
+          <div class="dcmp-content">
+            <script type="text/javascript">
+					//<![CDATA[
+					window.CKEDITOR_BASEPATH='/9010cms/include/ckeditor/';
+					//]]>
+                    </script>
+            <script type="text/javascript" src="/9010cms/include/ckeditor/ckeditor.js?t=B8DJ5M3"></script>
+             </div>
+          <!-- /dcmp-content -->
+          <div class="dcmp-post">
+            <!--未登陆-->
+            <div class="dcmp-userinfo" id="_ajax_feedback"> 
+              
+              <input type="checkbox" name="notuser" id="dcmp-submit-guest" />
+              <label for="dcmp-submit-guest" />
+              匿名?
+              </label>
+            </div>
+            
+            <div class="dcmp-submit">
+              <button type="button" onClick='PostComment()'>发表评论</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </dd>
+  </dl>
+</div>
+<!-- //评论表单区结束 -->
+<!-- //评论内容区 -->
+<a name='commettop'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dt> <strong>最新评论</strong> <span class="more"><a href="/feedback.php?aid=">进入详细评论页&gt;&gt;</a></span> </dt>
+    <!-- //这两个ID的区块必须存在，否则JS会出错 -->
+    <dd id='commetcontentNew'></dd>
+    <dd id='commetcontent'></dd>
+  </dl>
+</div>
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+-->
+<script language='javascript'>
+function LoadCommets(page)
+{
+		var taget_obj = document.getElementById('commetcontent');
+		var waithtml = "<div style='line-height:50px'><img src='/9010cms/images/loadinglit.gif' />评论加载中...</div>";
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
+		myajax.SendGet2("/9010cms/plus/feedback_ajax.php?dopost=getlist&aid=&page="+page);
+		DedeXHTTP = null;
+}
+function PostComment()
+{
+		var f = document.feedback;
+		var msg = CKEDITOR.instances.msg.getData();
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew');
+		var waithtml = "<div style='line-height:30px'><img src='/9010cms/images/loadinglit.gif' />正在发送中...</div>";
+		if(msg=='')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(f.validate)
+		{
+			if(f.validate.value=='') {
+				alert("请填写验证码！");
+				return;
+			}
+			else {
+				nvalidate = f.validate.value;
+			}
+		}
+		if(msg.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+		}
+		/*
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		*/
+		if(f.notuser.checked) nnotuser = '1';
+		if(f.username) nusername = f.username.value;
+		if(f.pwd) npwd = f.pwd.value;
+		
+		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'utf-8';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', '');
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', msg);
+		myajax.SendPost2('/9010cms/plus/feedback_ajax.php');
+		//msg = '';
+		CKEDITOR.instances.msg.setData('');
+		//taget_obj.removeAttribute('id');
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/9010cms/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+}
+function quoteCommet(fid)
+{
+	    document.feedback.fid.value = fid;
+}
+  
+function ajaxFeedback(aid, fid, type)
+{
+	
+	var taget_obj = $DE('ajaxfeedback_'+fid);
+	if(taget_obj.innerHTML == '')
+	{
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x');
+		myajax.SendGet2("/9010cms/plus/feedback.php?aid="+aid+"&fid="+fid+"&action=quote&type=ajax");
+		eval('var result = typeof CKEDITOR.instances.msg_'+fid);
+		if(result != 'undefined')
+		{
+			// 删除实例
+			eval('var edit = CKEDITOR.instances.msg_'+fid);
+			CKEDITOR.remove(edit);
+		}
+		CKEDITOR.replace(document.getElementById('msg_'+fid) , CKEDITOR.instances.msg.config);
+		scroll(0, taget_obj.offsetTop - 120);
+		var formname = 'f = document.ajaxfeedback_'+fid;
+		eval(formname);
+		if(f.validate)
+		{
+			if($DE('vdimg_'+fid)) $DE('vdimg_'+fid).src = "/9010cms/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+		DedeXHTTP = null;
+	}
+}
+
+
+
+function ajaxQuotePost(fid)
+{
+	var formname = 'f = document.ajaxfeedback_'+fid;
+	eval(formname);
+	//var f = document.formname;
+	//var f = f[0];
+	var nvalidate = '';
+	var nnotuser = '';
+	var nusername = '';
+	var npwd = '';
+	var taget_obj = $DE('commetcontentNew');
+	var waithtml = "<div style='line-height:30px'><img src='/9010cms/images/loadinglit.gif' />正在发送中...</div>";
+	eval('var msg = CKEDITOR.instances.msg_'+fid+'.getData()');
+
+	if(f.validate)
+	{
+		if(f.validate.value=='') {
+			alert("请填写验证码！");
+			return;
+		}
+		else {
+			nvalidate = f.validate.value;
+		}
+	}
+	var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+	
+	if(f.notuser.checked) nnotuser = '1';
+	if(f.username) nusername = f.username.value;
+	if(f.pwd) npwd = f.pwd.value;
+	
+	myajax.sendlang = 'utf-8';
+	myajax.AddKeyN('dopost', 'send');
+	myajax.AddKeyN('aid', '');
+	myajax.AddKeyN('fid', f.fid.value);
+	myajax.AddKeyN('type', 'ajax');
+	myajax.AddKeyN('comtype', f.comtype.value);
+	myajax.AddKeyN('isconfirm','yes');
+	
+	myajax.AddKeyN('typeid', f.typeid.value);
+	myajax.AddKeyN('quotemsg', f.quotemsg.value);
+	myajax.AddKeyN('validate', nvalidate);
+	myajax.AddKeyN('notuser', nnotuser);
+	myajax.AddKeyN('username', nusername);
+	myajax.AddKeyN('pwd', npwd);
+	myajax.AddKeyN('msg', msg);
+	myajax.SendPost2('/9010cms/plus/feedback_ajax.php');
+	//alert(f.quotemsg.value);
+	if($DE('ajaxfeedback_'+fid).innerHTML != null)
+	{
+		$DE('ajaxfeedback_'+fid).innerHTML = '';
+	}
+	scroll(0, taget_obj.offsetTop);
+}
+LoadCommets(1);
+</script>
+<!-- //评论内容区结束 -->
+ </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright"> 
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+      <li><a href='/9010cms/a/wenzhang_xinpinchangxian/zhiding/'>置顶</a></li>
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/9010cms/a/wenzhang_xinpinchangxian/2016/1210/61.html">畅玩无限</a></li>
+<li><a href="/9010cms/a/wenzhang_xinpinchangxian/2016/1126/40.html">8月最新新品尝鲜-鲜食类</a></li>
+<li><a href="/9010cms/a/wenzhang_xinpinchangxian/zhiding/2016/1126/38.html">8月最新新品尝鲜-饭团类</a></li>
+<li><a href="/9010cms/a/wenzhang_xinpinchangxian/2016/1126/34.html">5月最新新品尝鲜</a></li>
+<li><a href="/9010cms/a/wenzhang_xinpinchangxian/2016/1126/39.html">7月最新新品尝鲜</a></li>
+<li><a href="/9010cms/a/wenzhang_xinpinchangxian/2016/1126/33.html">6月最新新品尝鲜</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+ </div>
+ <!-- /pright -->
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2002-2011 DEDECMS. 织梦科技 版权所有 <a href=http://www.dedecms.com target='_blank'>Power by DedeCms</a>&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+</body>
+</html>

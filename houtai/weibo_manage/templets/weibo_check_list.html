@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset='UTF-8'>">
+<title>审核管理</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<script language="javascript" src="../include/js/dedeajax2.js"></script>
+<script language="javascript" src="js/ieemu.js"></script>
+<script language="javascript" src="js/context_menu.js"></script>
+<script language="javascript" src="js/main.js"></script>
+<script language="javascript" src="js/list.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<style>
+	.fancyBox{
+		position: fixed;
+		left:50%;
+		width:400px;
+		margin-left: -200px;
+		border: 1px solid #999;
+		border-radius: 5px;
+		display: none;
+	}
+	
+	a:hover{
+		color: red;
+	}
+</style>
+</head>
+
+<table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#CFCFCF" align="center" style="margin-top:8px">
+<tr bgcolor="#E7E7E7" >
+	<td height="28" colspan="10" background="image/tbg.gif" style="padding-left:10px;">
+	审核管理
+	</td>
+</tr>
+<tr align="center" bgcolor="#FBFCE2" height="25">
+	<td width="15%">用户名</td>
+	<td width="35%">内容</td>
+	<td width="15%">发表时间</td>
+	<td width="15%">图片</td>
+	<td width="20%">操作</td>
+</tr>
+<?php 
+	$td = '';
+	foreach($weibo as $key){
+		$td .= "<tr align='center' bgcolor='#FFFFFF' height='26' align='center'>";
+		$td .= "<td>".$key['author']."</td>";
+		$td .= "<td>".$key['detail']."</td>";
+		$td .= "<td>".$key['time']."</td>";
+		$td .= "<td><a href='weibo_manage.php?act=get_img&id=".$key['id']."'  style='color: rgb(40,40,40);text-decoration: none;'>查看</td>";
+		$td .= "<td>
+					<a href='weibo_manage.php?act=weibo_check&id=".$key['id']."&status=1' style='color: red;text-decoration: none;'>通过</a>&nbsp&nbsp
+					<a href='weibo_manage.php?act=weibo_check&id=".$key['id']."&status=2' style='color: red;text-decoration: none;'>不通过</a>
+				</td>
+				</tr>";	
+	}
+	echo $td;
+	echo "<div align='center' style='position: absolute;bottom: 20px;right: 0;left: 0;margin: auto;'>".$html."</div>";
+?>
+</body>
+</html>

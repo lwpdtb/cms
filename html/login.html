@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>9010手机端后台管理</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+	<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+</head>
+<body>
+	<div class="header">
+		<div class="am-g">
+		   <h1 class="am-text-center">9010手机端后台管理</h1>
+		</div>
+	  	<hr />
+	</div>
+	<div class="am-g">
+	  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+	    <h3 class="am-text-center">登录</h3>
+	    <hr>
+	    <form method="post" class="am-form" action="../index.php">
+	      <label for="name">帐号:</label>
+	      <input type="text" name="user_name" id="name" >
+	      <br>
+	      <label for="password">密码:</label>
+	      <input type="password" name="password" id="password" >
+	      <br>
+	      
+	      <div class="am-text-center">
+	        <input type="button" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm" id="sub">
+	      </div>
+	    </form>
+	    <hr>
+	    
+	  </div>
+	</div>
+		<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$('#sub').on('click',function(){
+				
+				$.ajax({
+					type: "post",
+	                url: '../log.php',
+	            	dataType: 'json',
+	                data:{
+	                	username: $('#name').val(),
+	                	password: $('#password').val()
+	                },
+	                success: function(data){
+	                	if(data.status=='ok'){
+	                		console.log(1);
+	                		window.location.href='admin.html';
+	                	}
+	                	else{
+	                		window.location.href='nolog.html';
+	                	}
+	                }
+	            })
+				
+			})
+		</script>
+</body>
+</html>

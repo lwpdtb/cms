@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>用户管理</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<script language="javascript" src="../include/js/dedeajax2.js"></script>
+<script language="javascript" src="js/ieemu.js"></script>
+<script language="javascript" src="js/context_menu.js"></script>
+<script language="javascript" src="js/main.js"></script>
+<script language="javascript" src="js/list.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<style>
+	.fancyBox{
+		position: fixed;
+		left:50%;
+		width:400px;
+		margin-left: -200px;
+		border: 1px solid #999;
+		border-radius: 5px;
+		display: none;
+	}
+	
+</style>
+</head>
+<table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#CFCFCF" align="center" style="margin-top:8px">
+<tr align="center" bgcolor="#E7E7E7" background="image/tbg.gif">
+	<form action="user.php" method="post">
+	<td width="20%">用户角色</td>
+	<td width="15%">
+		<select name="user_rank" style="width:70%">
+		<option value="0">全部用户</option>
+		<option value="1">普通用户</option>
+		<option value="2">专家</option>
+		</select>
+	</td>
+	<td width="20%">用户名称</td>
+	<td width="40%"><input type="text" name="name" style="width:85%"></td>
+	<td width="5%"><input type="submit" value="搜索"></td>
+	</form>
+</tr>
+</table>  
+
+<table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#CFCFCF" align="center" style="margin-top:8px">
+<tr bgcolor="#E7E7E7" >
+	<td height="28" colspan="10" background="image/tbg.gif" style="padding-left:10px;">
+	◆微博管理>用户管理
+	</td>
+</tr>
+<tr align="center" bgcolor="#FBFCE2" height="25">
+	<td width="15%">用户名</td>
+	<td width="15%">昵称</td>
+	<td width="15%">头像</td>
+	<td width="15%">权限</td>
+	<td width="40%">操作</td>
+</tr>
+<?php 
+	$td = '';
+	foreach($user as $key){
+		$td .= "<tr align='center' bgcolor='#FFFFFF' height='26' align='center'>";
+		$td .= "<td>".$key['user_name']."</td>";
+		$td .= "<td>".$key['alias']."</td>";
+		$td .= "<td><img src='".$key['user_img']."' height='150px'></td>";
+		$is_expert = $key['is_expert']==1?'专家':'普通用户';
+		$td .= "<td>".$is_expert."</td>";
+		$td .= "<td>
+					<a href='user.php?act=user_change&id=".$key['user_id']."&status=".$key['is_expert']."'>更改权限</a>
+				</td>
+				</tr>";	
+		}
+	echo $td;
+	echo "<div align='center' style='position: absolute;bottom: 20px;right: 0;left: 0;margin: auto;'>".$html."</div>";
+?>
+</body>
+</html>

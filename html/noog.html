@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>9010手机端后台管理</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+	<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+	<style>
+	.am-list-news-default{
+      margin: 10px;
+    }
+    .am-list>li{
+        border-width: 1px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .am-list-news-default .am-list .am-list-thumb img{
+        width: 90%;
+        margin: auto;
+    }
+    .am-tabs-bd .am-tab-panel{
+       padding: 10px 0;
+    }
+    .am-tabs-bd{
+      border:none;
+    }
+    .am-list-news-default .am-list .am-list-item-thumb-left .am-list-thumb{
+      padding-right:0;
+    }
+    .am-list-news-default .am-list .am-list-item-desced .am-list-item-text{
+        margin-top: 2.5rem;
+    }
+    .pad_right{
+      padding-right: 10px;
+    }
+    .border_bot{
+      height: 3rem;
+      border-bottom: 1px solid #dedede;
+    }
+    .am-list-news .am-list-item-hd{
+      margin: 0.5rem 0 0;
+    }
+    .status{
+      font-size: 1.3rem;
+      padding-left: 10px;
+    }
+    .am-gotop-fixed{
+      width:50px;
+    }
+    .cansee{
+      opacity: 1;
+    }
+    .am-btn{
+      padding: .3em 1em;
+    }
+	.btn_fl{
+      float: right;
+    margin-right: 10px;
+    }
+	.am-gotop-fixed{
+      		width:50px;
+    }
+	</style>
+</head>
+<body>
+	<header data-am-widget="header" class="am-header am-header-default">
+	      
+	      <h1 class="am-header-title">
+	          <a href="#title-link" class="">
+	            新闻管理
+	          </a>
+	      </h1>
+	      <!-- <div class="am-header-right am-header-nav" data-am-modal="{target: '#my-popup'}">
+	          <a href="#" class="" >
+
+	                <i class="am-header-icon am-icon-search"></i>
+	          </a>
+	      </div> -->
+	      
+	</header>
+	<div class="am-g">
+
+		<div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+				<div class="am-list-news-bd">
+					<ul class="am-list">
+					     <!--缩略图在标题左边-->
+					    
+					</ul>
+				</div>
+	   	</div>
+	</div>
+	<!-- 模态窗口，提示没有数据 -->
+	<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+	  <div class="am-modal-dialog">
+	    <div class="am-modal-hd">系统提示</div>
+	    <div class="am-modal-bd">
+	      没有数据了哦~
+	    </div>
+	    <div class="am-modal-footer">
+	      <span class="am-modal-btn">确定</span>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- 回到顶部锚点 -->
+	<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+		<a href="#top" title="回到顶部" class="am-icon-btn am-icon-arrow-up am-active" id="amz-go-top"></a>
+	</div>
+
+   	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/amazeui.min.js"></script>
+	<script type="text/javascript">
+		;(function(){
+			var index=0;
+			function getlist(start){
+				$.ajax({
+					type: "post",
+	                url: '../preview.php?act=nolog',
+	                dataType: 'json',
+	                data:{
+	                	start:start
+	                },
+	                success: function(data){
+	                	//console.log(data.datalist.length);
+	                	
+	                	
+	                	if(data.length==0){
+	                		 var $modal = $('#my-alert');
+                      		$modal.modal();
+	                	}
+	                	else{
+		                	index=start+10;
+		                	for(var i in data){
+		                		//console.log(data.datalist[i].litpic);
+		                		
+		                		data[i].arcrank==0?arcrank='已审核': arcrank='未审核';
+		                		var status_str,status;
+		                		data[i].arcrank==0?status_str='审核未通过':status_str='审核通过';
+		                		data[i].arcrank==0?status='-1':status='0';
+		                		$('.am-list').append(
+		                		'<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left cansee">'+
+							    	'<div class="am-u-sm-4 am-list-thumb">'+
+							    		'<a href="/9010news/index.php?m=Home&a=news&id='+data[i].id+'">'+
+							    			'<img src="'+data[i].litpic+'" alt=""/>'+
+							    		'</a>'+
+							    	'</div>'+
+							    	'<div class=" am-u-sm-8 am-list-main">'+
+							    		'<h3 class="am-list-item-hd">'+
+							    			'<a href="/9010news/index.php?m=Home&a=news&id='+data[i].id+'" class="">'+data[i].title+'</a>'+
+							    		'</h3>'+
+							    		'<div class="am-list-item-text">上传时间：'+data[i].senddate+'</div>'+
+							    	'</div>'+
+							    	'<div class=" am-u-sm-12 am-list-main border_bot">'+
+							    		'<h3 class="am-list-item-hd am-text-right pad_right">作者:<span class="am-text-warning">'+data[i].writer+'</span>'+
+							    		'</h3>'+
+							    	'</div>'+
+							    	'<div class=" am-u-sm-12 am-list-main">'+
+							    		'<h3 class="am-list-item-hd status">新闻状态：'+arcrank+
+							    			
+							    		'</h3>'+
+							    	'</div>'+
+							    '</li>'
+				         		);
+		                	}
+	                	}
+	                	
+	                }
+				});
+			}
+
+			getlist(index); //第一次加载
+			
+			//滚动到底部刷新函数
+			$(window).scroll(function(){
+				
+          　　var scrollTop = $(this).scrollTop();
+          　　var scrollHeight = $(document).height();
+          　　var windowHeight = $(this).height();
+              if (scrollTop>=$(document).height()-$(window).height() ) {
+              	
+                   getlist(index);
+              }
+          	});
+          	
+          	
+          
+				//给动态添加的元素绑定事件
+				// $('.am-list').on('click','.check-news',function(){
+				// 	$(this).css('disabled','true');
+    //            		$.ajax({
+    //            			type: "post",
+		  //               url: '../preview.php?act=check',
+		  //               data:{
+		  //               	status: $(this).attr('data-send').split('status=')[1].split('&id')[0],
+		  //               	id: $(this).attr('data-send').split('id=')[1]
+		  //               },
+		  //               success:function(data){
+		  //               	$(this).css('disabled','false');
+		  //               	if(data==='error')
+		  //               		alert('修改失败，请检查网络');
+
+		  //               	else{
+		  //               		alert('修改成功');
+		  //               		location.reload();
+		  //               	}
+		  //               }
+    //            		});
+    //             });
+
+			
+		})()
+	</script>
+</body>
+</html>

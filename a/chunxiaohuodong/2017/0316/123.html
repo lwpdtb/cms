@@ -1,0 +1,543 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>品牌汇集_我的网站</title>
+<meta name="keywords" content="品牌,汇集,天气,逐渐,转暖,各位,小主,是否," />
+<meta name="description" content="天气逐渐转暖，各位小主是否已经脱掉厚重的外套，换上靓丽的衣装， 用美好的心情漂亮的衣装来迎接暖春遍地的姹紫嫣红 然而我们好像遇到了一个假春天 近两天倒春寒来袭，气温骤" />
+<link href="/9010cms/templets/default/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/9010cms/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/9010cms/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/9010cms/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/9010cms/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/9010cms/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body class="articleview">
+
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://119.29.249.194"><img src="/9010cms/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/9010cms/'><span>主页</span></a></li>
+      	<li class='hover'><a href='/9010cms/a/chunxiaohuodong/' ><span>信息类-促销活动</span></a></li>
+      	<li><a href='/9010cms/a/wenzhang_xinpinchangxian/'  rel='dropmenu14'><span>信息类-新品尝鲜</span></a></li>
+      	
+      	<li><a href='/9010cms/a/dangqichunxiaoxinxizhanshi/'  rel='dropmenu1'><span>信息类-公司新闻</span></a></li>
+      	
+      	<li><a href='/9010cms/a/shipintupianhemiaoshu/' ><span>视频-公司资讯</span></a></li>
+      	
+      	<li><a href='/9010cms/a/zhaopinxinxizhanshi/'  rel='dropmenu5'><span>信息-招聘信息</span></a></li>
+      	
+      	<li><a href='/9010cms/a/xindianxinxichunxiaozhanshi/'  rel='dropmenu3'><span>【预留接口】其他版块</span></a></li>
+      	
+      	<li><a href='/9010cms/a/gongsizixunzhanshi/'  rel='dropmenu4'><span>【预留接口】其他版块</span></a></li>
+      	
+      	<li><a href='/9010cms/a/xinshangpinxinxizhanshi/' ><span>【预留接口】图片集-促销活动</span></a></li>
+      	
+      	<li><a href='/9010cms/a/tupianxinwen/' ><span>【预留接口】图片集-新品尝鲜</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/9010cms/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/9010cms/tags.php?/dfdg/'>dfdg</a></li>
+          
+            <li><a href='/9010cms/tags.php?/123/'>123</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://119.29.249.194/9010cms'>主页</a> > <a href='/9010cms/a/chunxiaohuodong/'>信息类-促销活动</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>品牌汇集</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2017-03-16 15:24<small>来源:</small>未知 <small>作者:</small>admin <small>点击:</small>
+   <script src="/9010cms/plus/count.php?view=yes&aid=123&mid=1" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="intro">天气逐渐转暖，各位小主是否已经脱掉厚重的外套，换上靓丽的衣装， 用美好的心情漂亮的衣装来迎接暖春遍地的姹紫嫣红 然而我们好像遇到了一个假春天 近两天倒春寒来袭，气温骤</div>
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+      <section style="font-family: 微软雅黑;"><section><section style="text-align: center;"><p style="margin-bottom: 7px; white-space: normal;"><br/></p><p style="margin-bottom: 7px; white-space: normal;"><img src="/ueditor/php/upload/image/20170316/1489648125582133.jpg" alt="01.jpg"/></p><section style="border: 0px none; padding: 0px; position: relative; box-sizing: border-box;"><section style="margin:0px auto;"><section style="display: inline-block; width: 100%; vertical-align: top;"><section style="position: static;"><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 15%;"><section style="position: static;"><section style="margin: 5px 0% 10px; line-height: 0.8; position: static;"><section style="width: 0px; display: inline-block; border-top: 0.8em solid rgb(187, 227, 197); border-left: 0.7em solid transparent !important; border-right: 0.7em solid transparent !important; box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section></section><section style="position: static;"><section style="text-align: justify; font-size: 14px; letter-spacing: 0px; line-height: 2; padding-right: 10px; padding-left: 10px; color: rgb(160, 160, 160); box-sizing: border-box;"><p style="margin-bottom: 7px; text-align: center; white-space: normal;"><span style="font-family: 微软雅黑, sans-serif; color: #000000;">天气逐渐转暖，各位小主是否已经脱掉厚重的外套，换上靓丽的衣装，</span></p><p style="margin-bottom: 7px; text-align: center; white-space: normal;"><span style="font-family: 微软雅黑, sans-serif; color: #000000;">用美好的心情漂亮的衣装来迎接暖春遍地的姹紫嫣红</span><span style="font-family: 微软雅黑, sans-serif;"><img src="/ueditor/php/upload/image/20170316/1489648125562769.png" alt="QQ图片20161220151554.png"/></span></p></section></section></section><section style="position: static;"><section style="margin-right: 0%; margin-left: 0%; position: static;"><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin: 18px 0% 8px; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 15%;"><section style="margin-top: 10px; margin-bottom: 10px; line-height: 0.8; position: static;"><section style="width: 0px; display: inline-block; border-bottom: 0.8em solid rgb(121, 204, 213); border-left: 0.7em solid transparent !important; border-right: 0.7em solid transparent !important; box-sizing: border-box;"></section></section></section><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin: 18px 0% 8px; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"><br/></section></section></section></section></section></section></section></section><p style="margin-bottom: 7px; white-space: normal;"><img src="/ueditor/php/upload/image/20170316/1489648126776809.jpg" alt="638aabf9tw1erutzahyvug204g04gann.jpg"/></p><p style="margin-bottom: 7px; white-space: normal;"><br/></p><p style="margin-bottom: 7px; white-space: normal;"><span style="font-family: 微软雅黑, sans-serif;">然而我们好像遇到了一个假春天</span></p><section style="border: 0px none; padding: 0px; box-sizing: border-box;"><section><section style="display:inline-block;width:36px;"><img style="max-width: 100%; width: 36px; display: inline;" title="雪花动图分割线" src="http://image2.135editor.com/cache/remote/aHR0cDovL21tYml6LnFwaWMuY24vbW1iaXpfZ2lmL2RpYTd0N2hENUlEdHAwenVuNWdCVmlhUkt2Nlp5emFFYlJhOExYS3VpYXFFZGlhSkpGUGw0WDc4Y0lDaWNXUWpEckt5Sjd3SVlnaHBUV0dzWTg5WTNwUHlpYm13LzA/d3hfZm10PWdpZg=="/></section></section></section><section style="display: inline-block; width: 150px;"><img src="/ueditor/php/upload/image/20170316/1489648126117468.jpg" alt="猫.jpg" width="150" height="" title="猫.jpg" style="margin: 0px; width: 150px !important;"/></section><p style="white-space: normal;"><br/></p><section style="border: 0px none; padding: 0px; position: relative; box-sizing: border-box;"><section style="margin:0px auto;"><section style="display: inline-block; width: 100%; vertical-align: top;"><section style="position: static;"><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 15%;"><section style="position: static;"><section style="margin: 5px 0% 10px; line-height: 0.8; position: static;"><section style="width: 0px; display: inline-block; border-top: 0.8em solid rgb(187, 227, 197); border-left: 0.7em solid transparent !important; border-right: 0.7em solid transparent !important; box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section></section><section style="position: static;"><section style="text-align: justify; font-size: 14px; letter-spacing: 0px; line-height: 2; padding-right: 10px; padding-left: 10px; color: rgb(160, 160, 160); box-sizing: border-box;"><p style="margin-bottom: 7px; white-space: normal; text-align: center;"><span style=";font-family: 微软雅黑, sans-serif;;font-family: 微软雅黑, sans-serif; color: #000000;">&nbsp;近两天倒春寒来袭，气温骤降，不得不再次穿上厚衣抵御寒潮，</span></p><p style="margin-bottom: 7px; text-align: center; white-space: normal;"><span style="font-family: 微软雅黑, sans-serif; color: #000000;">窝在家中隔绝寒冷，连购物的心情都消失殆尽。</span></p></section></section></section><section style="position: static;"><section style="margin-right: 0%; margin-left: 0%; position: static;"><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin: 18px 0% 8px; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 15%;"><section style="margin-top: 10px; margin-bottom: 10px; line-height: 0.8; position: static;"><section style="width: 0px; display: inline-block; border-bottom: 0.8em solid rgb(121, 204, 213); border-left: 0.7em solid transparent !important; border-right: 0.7em solid transparent !important; box-sizing: border-box;"></section></section></section><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin: 18px 0% 8px; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section></section></section></section></section><p style="margin-bottom: 7px; white-space: normal;"><br/></p><p style="margin-bottom: 7px; white-space: normal;"><img src="/ueditor/php/upload/image/20170316/1489648126781457.gif" alt="t01f57445849c4a6ef0.gif"/></p><section style="border: 0px none; padding: 0px; position: relative; box-sizing: border-box;"><section style="margin:0px auto;"><section style="display: inline-block; width: 100%; vertical-align: top;"><section style="position: static;"><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 15%;"><section style="position: static;"><section style="margin: 5px 0% 10px; line-height: 0.8; position: static;"><section style="width: 0px; display: inline-block; border-top: 0.8em solid rgb(187, 227, 197); border-left: 0.7em solid transparent !important; border-right: 0.7em solid transparent !important; box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section></section><section style="position: static;"><section style="text-align: justify; font-size: 14px; letter-spacing: 0px; line-height: 2; padding-right: 10px; padding-left: 10px; color: rgb(160, 160, 160); box-sizing: border-box;"><p style="text-align: center; white-space: normal;"><span style="color: #000000;"><span style="white-space: pre-wrap; font-family: 微软雅黑, sans-serif;">可是即使天气再寒冷，吃穿用却是一样都不能少，所以</span><span style="white-space: pre-wrap;">9010</span><span style="white-space: pre-wrap; font-family: 微软雅黑, sans-serif;">为了让您一次性舒心购物，特此推出品牌活动。品牌汇集让您的选择困难症药到病除，一次性购物满意。</span></span></p></section></section></section><section style="position: static;"><section style="margin-right: 0%; margin-left: 0%; position: static;"><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin: 18px 0% 8px; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 15%;"><section style="margin-top: 10px; margin-bottom: 10px; line-height: 0.8; position: static;"><section style="width: 0px; display: inline-block; border-bottom: 0.8em solid rgb(121, 204, 213); border-left: 0.7em solid transparent !important; border-right: 0.7em solid transparent !important; box-sizing: border-box;"></section></section></section><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin: 18px 0% 8px; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"><br/></section></section></section></section></section></section></section></section><p style="margin-bottom: 7px; white-space: normal;"><img src="/ueditor/php/upload/image/20170316/1489648127164467.jpg" alt="02.jpg"/></p><p style="margin-bottom: 7px; white-space: normal;"><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;">购易特购任意商品1件</span></strong><strong><span style="font-size:32px;font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">送</span></strong><strong><span style="font-family: &#39;微软雅黑&#39;,&#39;sans-serif&#39;">蒙牛酸牛奶红枣预制杯160g一杯</span></strong></p><p style="margin-bottom: 7px; white-space: normal;"><strong><span style="font-family: &#39;微软雅黑&#39;,&#39;sans-serif&#39;"> <img src="/ueditor/php/upload/image/20170316/1489648127108078.jpg" alt="03.jpg"/></span></strong></p><p style="margin-bottom: 7px; white-space: normal;"><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;">购德食任意2件</span></strong><strong><span style="font-size:32px;font-family: &#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">送</span></strong><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;">康师傅酸梅汤450ml一瓶</span></strong></p><section style="border: 0px none; padding: 0px; box-sizing: border-box;"><p style="white-space: normal;"><img title="叶子分割线" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpei96aWFkRERReGJDSkZEcTFNYW9OY2xhSk9wRWxjemliaWE2VVh0eENhZGtJdmRLVWlhTFZrdVZuaGt4MzJBM0pDTTZJNGhvd3BIMTc1cENob0ZhWG45Z0tTaWNBLzA/d3hfZm10PXBuZw==" style="display: inline;"/></p></section><p style="margin-bottom: 7px; white-space: normal;"><br/></p><p style="margin-bottom: 7px; white-space: normal;"><img src="/ueditor/php/upload/image/20170316/1489648127484451.jpg" alt="04.jpg"/><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;">购元龙牛肉干任意2件</span></strong><strong><span style="font-size:32px;font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">立减</span></strong><strong><span style="font-size:35px;font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">10</span></strong><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">元</span></strong></p><p style="margin-bottom: 7px; white-space: normal;"><br/></p><p style="margin-bottom: 7px; white-space: normal;"><img src="/ueditor/php/upload/image/20170316/1489648127444087.jpg" alt="05.jpg"/><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;">购原本系列2瓶</span></strong><strong><span style="font-size:32px;font-family: &#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">立减</span></strong><strong><span style="font-size:35px;font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">8</span></strong><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">元</span></strong></p><section style="border: 0px none; padding: 0px; box-sizing: border-box;"><p style="white-space: normal;"><img title="叶子分割线" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpei96aWFkRERReGJDSkZEcTFNYW9OY2xhSk9wRWxjemliaWE2VVh0eENhZGtJdmRLVWlhTFZrdVZuaGt4MzJBM0pDTTZJNGhvd3BIMTc1cENob0ZhWG45Z0tTaWNBLzA/d3hfZm10PXBuZw==" style="display: inline;"/></p></section><p style="margin-bottom: 7px; white-space: normal;"><br/></p><p style="margin-bottom: 7px; white-space: normal;"><img src="/ueditor/php/upload/image/20170316/1489648128151730.jpg" alt="06.jpg"/></p><p style="margin-bottom: 7px; white-space: normal;"><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;">购如爱初见系列满14元</span></strong><strong><span style="font-size:32px;font-family: &#39;微软雅黑&#39;,&#39;sans-serif&#39;;color:red">送</span></strong><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;">Hamu</span></strong><strong><span style="font-family:&#39;微软雅黑&#39;,&#39;sans-serif&#39;">焦糖饼干原味100g一袋</span></strong></p><section style="border: 0px none; padding: 0px; box-sizing: border-box;"><p style="white-space: normal;"><img title="叶子分割线" src="http://image3.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpei96aWFkRERReGJDSkZEcTFNYW9OY2xhSk9wRWxjemliaWE2VVh0eENhZGtJdmRLVWlhTFZrdVZuaGt4MzJBM0pDTTZJNGhvd3BIMTc1cENob0ZhWG45Z0tTaWNBLzA/d3hfZm10PXBuZw==" style="display: inline;"/></p></section><section style="border: 0px none; padding: 0px; position: relative; box-sizing: border-box;"><section style="margin:0px auto;"><section style="display: inline-block; width: 100%; vertical-align: top;"><section style="position: static;"><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 15%;"><section style="position: static;"><section style="margin: 5px 0% 10px; line-height: 0.8; position: static;"><section style="width: 0px; display: inline-block; border-top: 0.8em solid rgb(187, 227, 197); border-left: 0.7em solid transparent !important; border-right: 0.7em solid transparent !important; box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section></section><section style="position: static;"><section style="text-align: justify; font-size: 14px; letter-spacing: 0px; line-height: 2; padding-right: 10px; padding-left: 10px; color: rgb(160, 160, 160); box-sizing: border-box;"><p style="margin-bottom: 7px; text-align: center; white-space: normal;"><span style="font-family: 微软雅黑, sans-serif; color: #000000;">寒冷不可怕，可怕的是想吃没得吃，想用没得用。</span></p><p style="margin-bottom: 7px; text-align: center; white-space: normal;"><span style="font-family: 微软雅黑, sans-serif; color: #000000;">不要让寒冷夺走你的生活，要在寒冷中活出精彩。</span></p><p style="margin-bottom: 7px; text-align: center; white-space: normal;"><span style="font-family: 微软雅黑, sans-serif; color: #000000;">生活中不止有工作和远方，还有美食和小妹纸。</span></p></section></section></section><section style="position: static;"><section style="margin-right: 0%; margin-left: 0%; position: static;"><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin: 18px 0% 8px; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"></section></section></section></section><section style="display: inline-block; vertical-align: top; width: 15%;"><section style="margin-top: 10px; margin-bottom: 10px; line-height: 0.8; position: static;"><section style="width: 0px; display: inline-block; border-bottom: 0.8em solid rgb(121, 204, 213); border-left: 0.7em solid transparent !important; border-right: 0.7em solid transparent !important; box-sizing: border-box;"></section></section></section><section style="display: inline-block; vertical-align: top; width: 40%;"><section style="position: static;"><section style="margin: 18px 0% 8px; position: static;"><section style="border-top: 1px dotted rgb(223, 223, 223); box-sizing: border-box;"><br/></section></section></section></section></section></section></section></section><p style="margin-bottom: 7px; white-space: normal;"><img src="/ueditor/php/upload/image/20170316/1489648128977165.gif" alt="1018_155577654_records---rotate4.gif"/></p><p style="white-space: normal;"><span style="font-size: 10px;">以上部分图片来源于网络</span></p></section></section></section><p><br/></p>
+      
+      (责任编辑：admin)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',123)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',123)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(123);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='/9010cms/a/chunxiaohuodong/2016/1231/83.html'> HELLO  2017</a> </li>
+     <li>下一篇：<a href='/9010cms/a/chunxiaohuodong/2017/0316/124.html'>闹元宵</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/9010cms/plus/stow.php?aid=123" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/9010cms/plus/erraddsave.php?aid=123&title=品牌汇集" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/9010cms/plus/recommend.php?aid=123" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+ <!-- //AJAX评论区 -->
+ <!-- //主模板必须要引入/9010cms/include/dedeajax2.js -->
+<a name='postform'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dt> <strong>发表评论</strong> <span class="more"></span> </dt>
+    <dd>
+      <div class="dede_comment_post">
+        <form action="#" method="post" name="feedback" onsubmit="return false;">
+          <input type="hidden" name="dopost" value="send" />
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="123" />
+          <input type="hidden" name="fid" id='feedbackfid' value="0" />
+          <div class="dcmp-title"> <small>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</small> </div>
+          <!-- /dcmp-title -->
+          <div class="dcmp-stand"> <strong>评价:</strong>
+            <input type="radio" name="feedbacktype" checked="1" value="feedback" id="dcmp-stand-neu" />
+            <label for="dcmp-stand-neu"><img src="/9010cms/templets/default/images/cmt-neu.gif" />中立</label>
+            <input type="radio" name="feedbacktype" value="good" id="dcmp-stand-good" />
+            <label for="dcmp-stand-good"><img src="/9010cms/templets/default/images/cmt-good.gif" />好评</label>
+            <input type="radio" name="feedbacktype" value="bad" id="dcmp-stand-bad" />
+            <label for="dcmp-stand-bad"><img src="/9010cms/templets/default/images/cmt-bad.gif" />差评</label>
+          </div>
+          <!-- /dcmp-stand -->
+          <div class="clr"></div>
+          <div class="dcmp-content">
+            <script type="text/javascript">
+					//<![CDATA[
+					window.CKEDITOR_BASEPATH='/9010cms/include/ckeditor/';
+					//]]>
+                    </script>
+            <script type="text/javascript" src="/9010cms/include/ckeditor/ckeditor.js?t=B8DJ5M3"></script>
+             </div>
+          <!-- /dcmp-content -->
+          <div class="dcmp-post">
+            <!--未登陆-->
+            <div class="dcmp-userinfo" id="_ajax_feedback"> 
+              
+              <input type="checkbox" name="notuser" id="dcmp-submit-guest" />
+              <label for="dcmp-submit-guest" />
+              匿名?
+              </label>
+            </div>
+            
+            <div class="dcmp-submit">
+              <button type="button" onClick='PostComment()'>发表评论</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </dd>
+  </dl>
+</div>
+<!-- //评论表单区结束 -->
+<!-- //评论内容区 -->
+<a name='commettop'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dt> <strong>最新评论</strong> <span class="more"><a href="/feedback.php?aid=">进入详细评论页&gt;&gt;</a></span> </dt>
+    <!-- //这两个ID的区块必须存在，否则JS会出错 -->
+    <dd id='commetcontentNew'></dd>
+    <dd id='commetcontent'></dd>
+  </dl>
+</div>
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+-->
+<script language='javascript'>
+function LoadCommets(page)
+{
+		var taget_obj = document.getElementById('commetcontent');
+		var waithtml = "<div style='line-height:50px'><img src='/9010cms/images/loadinglit.gif' />评论加载中...</div>";
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
+		myajax.SendGet2("/9010cms/plus/feedback_ajax.php?dopost=getlist&aid=&page="+page);
+		DedeXHTTP = null;
+}
+function PostComment()
+{
+		var f = document.feedback;
+		var msg = CKEDITOR.instances.msg.getData();
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew');
+		var waithtml = "<div style='line-height:30px'><img src='/9010cms/images/loadinglit.gif' />正在发送中...</div>";
+		if(msg=='')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(f.validate)
+		{
+			if(f.validate.value=='') {
+				alert("请填写验证码！");
+				return;
+			}
+			else {
+				nvalidate = f.validate.value;
+			}
+		}
+		if(msg.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+		}
+		/*
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		*/
+		if(f.notuser.checked) nnotuser = '1';
+		if(f.username) nusername = f.username.value;
+		if(f.pwd) npwd = f.pwd.value;
+		
+		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'utf-8';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', '');
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', msg);
+		myajax.SendPost2('/9010cms/plus/feedback_ajax.php');
+		//msg = '';
+		CKEDITOR.instances.msg.setData('');
+		//taget_obj.removeAttribute('id');
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/9010cms/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+}
+function quoteCommet(fid)
+{
+	    document.feedback.fid.value = fid;
+}
+  
+function ajaxFeedback(aid, fid, type)
+{
+	
+	var taget_obj = $DE('ajaxfeedback_'+fid);
+	if(taget_obj.innerHTML == '')
+	{
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x');
+		myajax.SendGet2("/9010cms/plus/feedback.php?aid="+aid+"&fid="+fid+"&action=quote&type=ajax");
+		eval('var result = typeof CKEDITOR.instances.msg_'+fid);
+		if(result != 'undefined')
+		{
+			// 删除实例
+			eval('var edit = CKEDITOR.instances.msg_'+fid);
+			CKEDITOR.remove(edit);
+		}
+		CKEDITOR.replace(document.getElementById('msg_'+fid) , CKEDITOR.instances.msg.config);
+		scroll(0, taget_obj.offsetTop - 120);
+		var formname = 'f = document.ajaxfeedback_'+fid;
+		eval(formname);
+		if(f.validate)
+		{
+			if($DE('vdimg_'+fid)) $DE('vdimg_'+fid).src = "/9010cms/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+		DedeXHTTP = null;
+	}
+}
+
+
+
+function ajaxQuotePost(fid)
+{
+	var formname = 'f = document.ajaxfeedback_'+fid;
+	eval(formname);
+	//var f = document.formname;
+	//var f = f[0];
+	var nvalidate = '';
+	var nnotuser = '';
+	var nusername = '';
+	var npwd = '';
+	var taget_obj = $DE('commetcontentNew');
+	var waithtml = "<div style='line-height:30px'><img src='/9010cms/images/loadinglit.gif' />正在发送中...</div>";
+	eval('var msg = CKEDITOR.instances.msg_'+fid+'.getData()');
+
+	if(f.validate)
+	{
+		if(f.validate.value=='') {
+			alert("请填写验证码！");
+			return;
+		}
+		else {
+			nvalidate = f.validate.value;
+		}
+	}
+	var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+	
+	if(f.notuser.checked) nnotuser = '1';
+	if(f.username) nusername = f.username.value;
+	if(f.pwd) npwd = f.pwd.value;
+	
+	myajax.sendlang = 'utf-8';
+	myajax.AddKeyN('dopost', 'send');
+	myajax.AddKeyN('aid', '');
+	myajax.AddKeyN('fid', f.fid.value);
+	myajax.AddKeyN('type', 'ajax');
+	myajax.AddKeyN('comtype', f.comtype.value);
+	myajax.AddKeyN('isconfirm','yes');
+	
+	myajax.AddKeyN('typeid', f.typeid.value);
+	myajax.AddKeyN('quotemsg', f.quotemsg.value);
+	myajax.AddKeyN('validate', nvalidate);
+	myajax.AddKeyN('notuser', nnotuser);
+	myajax.AddKeyN('username', nusername);
+	myajax.AddKeyN('pwd', npwd);
+	myajax.AddKeyN('msg', msg);
+	myajax.SendPost2('/9010cms/plus/feedback_ajax.php');
+	//alert(f.quotemsg.value);
+	if($DE('ajaxfeedback_'+fid).innerHTML != null)
+	{
+		$DE('ajaxfeedback_'+fid).innerHTML = '';
+	}
+	scroll(0, taget_obj.offsetTop);
+}
+LoadCommets(1);
+</script>
+<!-- //评论内容区结束 -->
+ </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright"> 
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="/9010cms/a/chunxiaohuodong/2017/0316/123.html">品牌汇集</a>
+       <p>天气逐渐转暖，各位小主是否已经脱掉厚重的外套，换上靓丽的...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/9010cms/a/chunxiaohuodong/2016/1231/83.html"> HELLO  2017</a></li>
+<li><a href="/9010cms/a/chunxiaohuodong/2016/1223/73.html">圣诞促销季</a></li>
+<li><a href="/9010cms/a/chunxiaohuodong/2016/1224/79.html">不想吃土的看这里</a></li>
+<li><a href="/9010cms/a/chunxiaohuodong/2017/0316/124.html">闹元宵</a></li>
+<li><a href="/9010cms/a/chunxiaohuodong/2017/0316/123.html">品牌汇集</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+ </div>
+ <!-- /pright -->
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2002-2011 DEDECMS. 织梦科技 版权所有 <a href=http://www.dedecms.com target='_blank'>Power by DedeCms</a>&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+</body>
+</html>
