@@ -2,6 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<meta name=”viewport” content=”width=device-width, initial-scale=1″ />
+<link rel="stylesheet" type="text/css"
+          media="screen and (max-device-width: 400px)"
+          href="tinyScreen.css" />
 <title>更改文章</title>
 <style type="text/css">
 <!--
@@ -35,12 +39,12 @@ body {
 }
 .previewPage{
     width: 60px;
-    height: 30px;
+    height: 35px;
     border-radius: 3px;
     background: rgb(0,153,204);
     display: inline-block;
     text-align: center;
-    line-height: 30px;
+    line-height: 35px;
     cursor: pointer;
     color: white;
     vertical-align: top;
@@ -227,26 +231,56 @@ function delAlbPicOld(picfile, pid){
           </div>
         </div>
     </div>
-
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="60%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>文章列表</u></a> &gt;&gt; 更改文章</td>
+    <td width="30%" align='right'>&nbsp; <a href="/XFRScms/houtai/content_list.php">[<u>文章列表</u>]</a><a href="catalog_main.php">[<u>栏目管理</u>]</a></td>
+    <td width="1%">&nbsp;</td>
+  </tr>
+</table>
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1">
+  <tr>
+    <td colspan="2"><table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="84" height="24" align="center" background="images/itemnote1.gif">&nbsp;常规信息&nbsp;</td>
+          <td width="84" align="center" background="images/itemnote2.gif"><a href="#" onClick="ShowItem2()"><u>高级参数</u></a></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head2" style="display:none">
+  <tr>
+    <td colspan="2"><table height="24" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="84" align="center" background="images/itemnote2.gif"><a href="#" onClick="ShowItem1()"><u>常规信息</u></a>&nbsp;</td>
+          <td width="84" align="center" background="images/itemnote1.gif">高级参数</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
 <form name="form1" action="article_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
   <input type="hidden" name="dopost" value="save" />
   <input type="hidden" name="channelid" value="<?php echo $channelid?>" />
   <input type="hidden" name="id" value="<?php echo $aid?>" />
 <!--标题-->
-  <div id="needset" style=" border-top: 3px solid #dd4b39;padding:15px;border-radius:5px;background-color: white;width: 43%;display: flex;flex-direction: column;float: left">
+    <div style="width: 99%;height: 99%" >
+  <div id="needset" style="margin-left: 1%; border-top: 3px solid #dd4b39;padding:15px;border-radius:5px;background-color: white;width: 46%;display: flex;flex-direction: column;float: left">
 
                 <label style="font-size: 14px">文章标题：</label>
                 <input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:98%;height:35%;">
                 <label style="font-size: 14px"><br/>简略标题：</label>
                 <input name="shorttitle" type="text" id="shorttitle" style="width:98%;height:35%;"  value="<?php echo $arcRow['shorttitle']; ?>">
       <br/>文章来源：
-               <div>
+               <div style="display: flex;flex-direction: row;">
                <input name="source" type="text" id="source" style="width:80%;height:35%;" value="<?php echo $arcRow["source"]?>" size="16">
-               <input name="selsource" type="button" id="selsource" value="选择" style="border-radius: 3px;background-color: #ffffff;" /></div>
+               <input name="selsource" type="button" id="selsource" value="选择" style="margin-left: 2%;background-color: #ffffff;
+    border-color: #dd4b39;padding:0;vertical-align:middle;border-radius: 3px;
+               background-color: #ffffff;width: 70px;height:auto" /></div>
       <br/>作者：
-               <div>
-               <input name="writer" type="text" id="writer" style="width:80%;height:35%;" value="<?php echo $arcRow["writer"]?>">
-               <input name="selwriter" type="button" id="selwriter" value="选择" style="border-radius: 3px;background-color: #ffffff;" /></div>
+               <div style="display: flex;flex-direction: row;" >
+               <input name="writer" type="text" id="writer" style="width:80%;height:35%" value="<?php echo $arcRow["writer"]?>">
+               <input name="selwriter" type="button" id="selwriter" value="选择" style="margin-left: 2%; background-color: #ffffff;
+    border-color: #c64333; padding:0;vertical-align:middle;border-radius: 3px;background-color: #ffffff;width:70px;height:auto" /></div>
 
       <div>
           <label style="font-size: 14px"> <br/>TAG标签：(','号分开，单个标签小于12字节)</label>
@@ -258,19 +292,29 @@ function delAlbPicOld(picfile, pid){
       </div>
   </div>
  <!--右边-->
-  <div style="display: flex;flex-direction: column;float: left;width:48%;margin-left: 18px;">
+  <div style="display: flex;flex-direction: column;float: left;width:46%;margin-left: 2%;">
   <!--栏目-->
-  <div style="border-top: 3px solid #f39c12;border-radius:5px;background-color: white; padding: 15px;float: left;margin-bottom: 18px">
+  <div style="width: 100%;height: inherit;padding:3%;border-top: 3px solid #f39c12;border-radius:5px;background-color: white;float: left;margin-bottom: 3%;margin-top: -2%;margin-right: -2%;">
       文章主栏目：
-      <div>
+      <div style=" width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: row;">
                       <?php
             $typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
-                          echo "<select name='typeid' id='typeid' style='width:80%;height:35%;'>\r\n";
+                          echo "<select name='typeid' id='typeid' style='width:80%;height:35%; background-color: white;
+    border: 1px solid #f39c12;'>\r\n";
                               if($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目...</option>\r\n";
                               echo $typeOptions;
                               echo "</select>";
                           ?>
-                          <img src='images/searchall.png' style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid', '<?php echo $arcRow['typeid']; ?>')" alt='快捷选择' title='快捷选择' />
+                          <img src='images/searchall.png' style='
+cursor:pointer
+    width: auto;
+    height: 24px;
+    padding: 0;
+    vertical-align: middle;
+    margin-left: 5px; ' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid', '<?php echo $arcRow['typeid']; ?>')" alt='快捷选择' title='快捷选择' />
                           <?php
      			 if($cfg_remote_site=='Y')
      			 {
@@ -288,11 +332,20 @@ function delAlbPicOld(picfile, pid){
 if($cfg_need_typeid2=='Y') {
 ?>
 
-                    文章副栏目：
-                  <div>
-                      <span id='typeid2ct'></span>
-                      <input type='text' name='typeid2' id='typeid2' value='<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>' style='width:80%;height:35%;' />
-                      <img src='images/searchall.png' style='cursor:pointer;' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2', '<?php echo $arcRow['typeid2']; ?>')" alt='选择副栏目' title='选择副栏目' /></td>
+                    <br/>文章副栏目：
+                  <div style="    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: row;">
+                      <!--   <span id='typeid2ct'></span> -->
+                      <input type='text' style="width: 80%;height: 24px;" name='typeid2' id='typeid2' value='<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>' style='width:85%;height:40%;' />
+                      <img src='images/searchall.png' style='cursor:pointer
+    width: auto;
+    height: 24px;
+    padding: 0;
+    vertical-align: middle;
+    margin-left: 5px; '
+                           onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2', '<?php echo $arcRow['typeid2']; ?>')" alt='选择副栏目' title='选择副栏目' /></td>
                   </div>
 
       <?php } ?>
@@ -335,27 +388,33 @@ if($cfg_need_typeid2=='Y') {
       ?></div>
   </div>
     <!--缩略图-->
-      <div id="pictable" style="border-top: 3px solid #03a75c;border-radius:5px;background-color: white; padding: 15px;float: left">
-            <label>&nbsp;缩 略 图：</label>
-             <div>
-              <input name="picname" type="text" id="picname" style="width:98%;height:35%;" value="<?php echo $arcRow["litpic"]?>">
-              <input type="button" class='button1' name="Submit" value="浏览..." style="width:70px;border-radius: 3px;background-color: #ffffff;border-color: #008d4c;"" onClick="SelectImage('form1.picname','');">
-              <input type="button" class='button1' name="Submit2" value="裁剪" style="margin-left:8px;border-radius: 3px;background-color: #ffffff;border-color: #008d4c;" onClick="imageCut('picname');" class='np coolbg'/>
+      <div id="pictable" style="width: 100%;height: inherit;border-top: 3px solid #03a75c;border-radius:5px;background-color: white; padding: 3%;float: left;margin-right: -2%;">
+          <div>
+            &nbsp;缩 略 图<input name="picname" type="text" id="picname" style="width:98%;height:35%;" value="<?php echo $arcRow["litpic"]?>">
+             &nbsp;
+              <div style="vertical-align: middle;display: flex;flex-direction: row;">
+              <input type="button" class='button1' name="Submit" value="浏览..." style="width:70px;height: 27px;padding: 0;border-radius: 3px;background-color: #ffffff;border-color: #008d4c;"" onClick="SelectImage('form1.picname','');">
+              <input type="button" class='button1' name="Submit2" value="裁剪" style="width: 70px;height: 27px;padding: 0;margin-left:8px;border-radius: 3px;background-color: #ffffff;border-color: #008d4c;" onClick="imageCut('picname');" class='np coolbg'/>
               <input type='checkbox' class='np' name='ddisremote' value='1'/>
-              远程
-              <img style="padding: 0;margin-left: 18px;margin-top: 8px;" src="<?php if($arcRow["litpic"]!="") echo $arcRow["litpic"]; else echo "images/pview.gif";?>" width="80" height="50" id="picview" name="picview">
-             </div>
-
-              <br/>附加选项：
+               远程
+                  <img style="padding: 0;margin:  0 0 0 9%;" src="<?php if($arcRow["litpic"]!="") echo $arcRow["litpic"]; else echo "images/pview.gif";?>" width="35%" height="20%" id="picview" name="picview">
+              </div>
+          </div>
+          &nbsp;
+          <div style="margin-top:-5%; ">
+              附加选项：
               <div>
                   <input name="remote" type="checkbox" class="np" id="remote" value="1" checked>
                   下载远程图片和资源
                   <input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" checked>
                   提取第一个图片为缩略图
               </div>
+          </div>
+
       </div>
     </div>
 </div>
+    </div>
     <table>
     <tr>
       <td width="100%"><?php GetEditor("body",$addRow['body'],450); ?></td>
@@ -540,22 +599,26 @@ if($cfg_need_typeid2=='Y') {
         </table></td>
     </tr>
   </table>
-  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0"  style="border-top:none;">
-    <tr>
-      <td height="35"><table width="100%" border="0" cellspacing="1" cellpadding="1">
-          <tr>
-            <td width="17%">&nbsp;</td>
-            <td width="83%"><table width="214" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td width="115"><span class="previewPage">预览</span></td>
-                  <td width="115"><input type="button" name="imageField" value="提交"  width="60" height="30" class="np" style="cursor:pointer;border-radius: 3px;"></td>
-                  <td width="99"><input type="button"  width="60" height="30"  value="重置" onClick="location.reload();" style="cursor:pointer;border-radius: 3px; "></td>
-                </tr>
-              </table></td>
-          </tr>
-        </table></td>
-    </tr>
-  </table>
+
+
+  <div style="display: flex;flex-direction: row;float: left;margin-top: 3%;margin-bottom:3%; position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);">
+                  <span class="previewPage">预览</span>&nbsp;
+                  <input type="button" name="imageField" value="提交"  class="np" style="padding:0;width: 60px;height: 35px;display: block;
+                  border-radius: 3px;background: rgb(0,153,204); line-height: 35px;cursor: pointer;color: white;">&nbsp;
+                  <input type="button" value="重置" onClick="location.reload();" style="width: 60px;
+    padding: 0;
+    height: 35px;
+    border-radius: 3px;
+    background: rgb(0,153,204);
+    line-height: 35px;
+    cursor: pointer;
+    color: white;">
+  </div>
+
+
   <script language='javascript'>
   InitPage();
   $('.previewPage').click(function(){

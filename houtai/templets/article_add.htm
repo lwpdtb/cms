@@ -244,7 +244,7 @@ function delAlbPicOld(picfile, pid){
     <tr style="
     display: flex;
     flex-direction: column;
-    width: 29%;
+    width: 45%;
     float: left;
     /* border: 1px solid black; */
     margin: 15px;
@@ -300,13 +300,13 @@ function delAlbPicOld(picfile, pid){
     <tr id="pictable" style="
     display: flex;
     flex-direction: column;
-    width: 38%;
+    width: 45%;
     float: left;
     /* border: 1px solid black; */
     margin: 15px;
     border-radius: 8px;
     border-top: 2px solid rgb(243,156,18);
-    background: white;height: 124px;">
+    background: white;height: 79px;">
             <td width="90"> &nbsp;缩 略 图：</td>
             <td width="560">
                   <td height="30">
@@ -326,7 +326,7 @@ function delAlbPicOld(picfile, pid){
     
     <tr style="display: flex;
     flex-direction: column;
-    width: 38%;
+    width: 45%;
     float: left;
     /* border: 1px solid black; */
     margin: 15px;
@@ -368,23 +368,17 @@ function delAlbPicOld(picfile, pid){
 
 
     <tr style="display: flex;
+    justify-content: space-around;
     flex-direction: row;
-    width: 74%;
+    width: 90%;
     float: left;
     /* border: 1px solid black; */
     margin: 20px;
     border-radius: 8px;
     border-top: 2px solid rgb(0,152,239);
     background: white;">
-  
-          <td width="90" height="22">&nbsp;评论选项：</td>
-          <td width="240">
-          <input type='radio' name='notpost' class='np' value='0' <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> />允许评论
-          &nbsp;
-          <input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> />禁止评论
-          </td>
-          <td width="90" height="22">&nbsp;文章排序：</td>
-            <td width="240">
+          <td  height="22">&nbsp;文章排序：</td>
+            <td>
             	<select name="sortup" id="sortup" style="width:150px">
                 <option value="0" selected>默认排序</option>
                 <option value="7">置顶一周</option>
@@ -394,8 +388,8 @@ function delAlbPicOld(picfile, pid){
                 <option value="360">置顶一年</option>
               </select> </td>
             
-            <td width="90">&nbsp;阅读权限：</td>
-            <td width="240"> <select name="arcrank" id="arcrank" style="width:150px">
+            <td>&nbsp;阅读权限：</td>
+            <td> <select name="arcrank" id="arcrank" style="width:150px">
                 <?php
                 $urank = $cuserLogin->getUserRank();
                 $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank'");
@@ -408,7 +402,7 @@ function delAlbPicOld(picfile, pid){
               </select> 
               </td>
                <td width="90">&nbsp;发布时间：</td>
-          <td width="241">
+          <td >
           	<?php
           $nowtime = GetDateTimeMk(time());
           echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" style=\"width:120px\">";
@@ -438,14 +432,18 @@ function delAlbPicOld(picfile, pid){
 							timeFormat     :    "24"
 						});
 					}
-				 </script>    </td>
-          <td width="90">发布选项：</td>
-          <td width="379"><input name="ishtml" type="radio" class="np" value="1" checked="1" />
-生成HTML
-  <input type="radio" name="ishtml" class="np" value="0"/>
-仅动态浏览 
+         </script>    </td>
+          <td>发布选项：</td>
+          <td>
+            <input name="ishtml" type="radio" class="np" value="1" checked="1" />生成HTML
+            <input type="radio" name="ishtml" class="np" value="0"/>仅动态浏览 
+            
          </td>
-         <td width="340">
+         <td>评论选项：</td>
+         <td><input type='radio' name='notpost' class='np' value='0' <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> />允许评论
+          &nbsp;
+          <input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> />禁止评论</td>
+         <td>
           	<?php
   if(isset($cfg_tamplate_rand) && $cfg_tamplate_rand==1)
   {
