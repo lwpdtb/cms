@@ -589,6 +589,7 @@ else if($dopost=='quickEdit')
     $divname = 'quickEdit';
     echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">\r\n";
     echo "    <div class='titLeft'>快速属性编辑</div>\r\n";
+    echo "    <div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' alt='关闭' title='关闭' /></div>\r\n";
     echo "</div>\r\n";
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>\r\n";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}' />\r\n";
@@ -993,9 +994,9 @@ else if($dopost=='getCatMap')
     AjaxHead();
     //输出AJAX可移动窗体
     $divname = 'getCatMap';
-    echo "<div class='title' style='cursor:default;'>\r\n";
-    echo "    <div class='titLeft'>栏目快速选择器</div>\r\n";
-    echo "    <div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' alt='关闭' title='关闭' /></div>\r\n";
+    //echo "<div class='title' style='cursor:default;'>\r\n";
+    //echo "    <div class='titLeft'>栏目快速选择器</div>\r\n";
+    //echo "    <div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' alt='关闭' title='关闭' /></div>\r\n";
     echo "</div>\r\n";
     $tus = new TypeUnitSelector();
 ?>
@@ -1003,10 +1004,10 @@ else if($dopost=='getCatMap')
 <div class='quicksel'>
     <?php $tus->ListAllType($channelid); ?>
 </div>
-<div align='center' class='quickselfoot'>
-    <img src="images/button_ok.gif" onclick="getSelCat('<?php echo $targetid; ?>');" width="60" height="22" class="np" border="0" style="cursor:pointer" />
+<div align='center' class='quickselfoot' style='justify-content: space-around;width:100%;'>
+    <input type="button" name="" value="确定" onclick="getSelCat('<?php echo $targetid; ?>');" width="60" height="20" class="np" border="0" style="cursor:pointer;border-radius: 3px;background:white;" >
         &nbsp;&nbsp;
-    <img src="images/button_back.gif" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' width="60" height="22" border="0"  style="cursor:pointer" />
+    <input type="button" name="" value="返回" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' width="60" height="20" border="0"  style="cursor:pointer;border-radius: 3px;background:white;" >
 </div>
 </form>
 <?php

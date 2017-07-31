@@ -73,6 +73,9 @@ class TypeUnitSelector
         $lastid = GetCookie('lastCidMenu');
         while($row=$this->dsql->GetObject(0))
         {
+            $x=rand(0,255);
+            $y=rand(0,255);
+            $z=rand(0,255);
             if( $cfg_admin_channel=='array' && !in_array($row->id, $admin_catalogs) )
             {
                 continue;
@@ -93,7 +96,7 @@ class TypeUnitSelector
             $this->LogicListAllSunType($id, $channel, $soncat);
             if($chackRadio=='' && $soncat=='') continue;
             echo "<div class='quickselItem'>\r\n";
-            echo "    <div class='topcat'>{$chackRadio}{$typeName}</div>\r\n";
+            echo "    <div class='topcat' style='border-top:1px solid rgb(".$x.",".$y.",".$z.");'>{$chackRadio}{$typeName}</div>\r\n";
             if($soncat!='') echo "    <div class='soncat'>{$soncat}</div>\r\n";
             echo "</div>\r\n";
         }

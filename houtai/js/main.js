@@ -440,12 +440,14 @@ function LoadQuickDiv(e, surl, oname, w, h)
 		newobj.className = 'pubdlg';
 		newobj.style.width = w;
 		newobj.style.height = h;
+		newobj.style.padding='5px';
 		document.body.appendChild(newobj);
 	}
 	if(posTop > 500) posTop = 500;
 	if(posLeft < 50) posLeft = 50;
-	newobj.style.top = posTop+"px";
-	newobj.style.left = posLeft+"px";
+	newobj.style.top = "50%";
+	newobj.style.left = "50%";
+	newobj.style.transform = "translate(-50%,-50%);";
 	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="images/loadinglit.gif" /> Loading...</div>';
 	newobj.style.display = 'block';
 	var myajax = new DedeAjax(newobj);
@@ -608,7 +610,7 @@ function getSelTxt()
 function ShowCatMap(e, obj, cid, targetId, oldvalue)
 {
 	fixupPos = true;
-	LoadQuickDiv(e, 'archives_do.php?dopost=getCatMap&targetid='+targetId+'&channelid='+cid+'&oldvalue='+oldvalue+'&rnd='+Math.random(), 'getCatMap', '700px', '500px');
+	LoadQuickDiv(e, 'archives_do.php?dopost=getCatMap&targetid='+targetId+'&channelid='+cid+'&oldvalue='+oldvalue+'&rnd='+Math.random(), 'getCatMap', '700px', '450px');
 	ChangeFullDiv('show');
 }
 
